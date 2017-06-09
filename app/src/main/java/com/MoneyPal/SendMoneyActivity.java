@@ -1,6 +1,7 @@
 package com.MoneyPal;
 
 import android.app.DownloadManager;
+import android.os.AsyncTask;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -49,7 +50,11 @@ public class SendMoneyActivity extends AppCompatActivity {
                 //AlertDialog();
                 Log.d("hell", "how r");
 try {
-    post(url, "{\"AccountNumber\": \"30001512992\" }");
+
+    AsyncTask t = new com.MoneyPal.ServerConnection().execute(url, "{\"AccountNumber\": \"30001512992\" }");
+
+    Log.d("tag", t.get().toString());
+
 } catch (Exception e){
     Log.e("error", e.toString());
 }
@@ -67,23 +72,5 @@ try {
     };
 
 
-    public static final MediaType JSON
-            = MediaType.parse("application/json; charset=utf-8");
 
-    String post(String url, String json) throws IOException {
-
-        OkHttpClient client = new OkHttpClient();
-        //TODO create new asynctask and its ready to go!!
-
-        RequestBody body = RequestBody.create(JSON, json);
-        Request request = new Request.Builder()
-                .url(url)
-                .post(body)
-                .build();
-
-        request.newBuilder().addHeader("apikey", "VP81nkyVLqrNgrf");
-        Response response = client.newCall(request).execute();
-        Log.d("response", response.body().string());
-        return response.body().string();
-    }
 }
