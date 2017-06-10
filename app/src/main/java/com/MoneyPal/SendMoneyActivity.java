@@ -22,7 +22,6 @@ public class SendMoneyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_money);
 
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, Utility.FRIENDS);
         //TODO drop down menu will be better, slect karo etle list popup thay, wither select existing one or create new one
