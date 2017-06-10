@@ -46,8 +46,9 @@ public class ServerConnection extends AsyncTask<String, Void, String> {
 
             request = request.newBuilder().addHeader("apikey", "VP81nkyVLqrNgrf").build();
             Response response = client.newCall(request).execute();
-            Log.d("response", response.body().string());
-            return response.body().string();
+            String s = response.body().string();
+            Log.d("response", s);
+            return s;
         } catch (Exception e) {
             this.exception = e;
 

@@ -51,18 +51,13 @@ public class SendMoneyActivity extends AppCompatActivity {
                 Log.d("hell", "how r");
 try {
 
-    AsyncTask t = new com.MoneyPal.ServerConnection().execute(url, "{\"AccountNumber\": \"30001512992\" }");
+    String s = new com.MoneyPal.ServerConnection().execute(url, "{\"AccountNumber\": \"30001512992\" }").get();
 
-    Log.d("tag", t.get().toString());
+    Log.d("tag", s);
 
 } catch (Exception e){
     Log.e("error", e.toString());
 }
-
-
-
-
-
             }
         });
     }
