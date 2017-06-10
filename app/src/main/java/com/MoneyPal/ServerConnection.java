@@ -6,13 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONObject;
-import org.xml.sax.XMLReader;
 
-import java.io.IOException;
-import java.net.URL;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -25,6 +19,7 @@ import okhttp3.Response;
  */
 
 
+//TODO use IntentService instead
 public class ServerConnection extends AsyncTask<String, Void, String> {
 
     private Exception exception;
@@ -51,8 +46,16 @@ public class ServerConnection extends AsyncTask<String, Void, String> {
             return s;
         } catch (Exception e) {
             this.exception = e;
-
             return null;
         }
     }
 }
+
+
+/*
+
+Server API Key help
+AIzaSyAMYVE_UMU0bG5gfTRbYRi4_zkb0jyYsLw
+Sender ID help
+511654669517
+ */
