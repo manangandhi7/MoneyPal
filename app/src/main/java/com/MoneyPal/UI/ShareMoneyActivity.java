@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.MoneyPal.Common.Utility;
 import com.MoneyPal.R;
@@ -76,5 +77,10 @@ public class ShareMoneyActivity extends AppCompatActivity {
         button.setOnClickListener(onClick());
         //add child to parent
         linearLayout.addView(view);
+    }
+
+
+    public void onSplitSettingChanged() {
+        Toast.makeText(this, "changed", Toast.LENGTH_SHORT);
     }
 }
