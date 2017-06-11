@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="2">
+    android:layout_weight="2"
+    android:orientation="horizontal">
 
 
-        <Spinner
-            android:id="@+id/participant_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/prompt_receiver"
-            android:maxLines="1"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            android:layout_gravity="left"
-            android:layout_weight="0.8"/>
+    <Spinner
+        android:id="@+id/participant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_weight="0.8"
+        android:background="@android:drawable/btn_dropdown"
+        android:hint="@string/prompt_receiver"
+        android:maxLines="1"
+        android:spinnerMode="dropdown" />
 
     <EditText
         android:id="@+id/participant_contribution"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="payer"
-        android:singleLine="true"
-        android:maxLines="1"
         android:layout_gravity="right"
         android:layout_weight="0.8"
-        android:inputType="text"
+        android:hint="payer"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:singleLine="true"
         android:text="0.0" />
 
     <Button
-        android:text="Remove"
+        android:id="@+id/remove_part"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/remove_part"
-        android:layout_weight="0.4" />
+        android:layout_weight="0.4"
+        android:text="Remove" />
 
 </LinearLayout>

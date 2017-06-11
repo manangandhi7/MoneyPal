@@ -54,13 +54,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_weight="0.9"
+            android:layout_weight="0.5"
             android:text="Participant(s)" />
+
+        <CheckBox
+            android:text="Even split"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/even_split"
+            android:layout_weight="0.4"
+            android:checked="true" />
 
         <Button
             android:id="@+id/add_participant"
             android:layout_width="wrap_content"
-
+            android:layout_weight="0.1"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="Add+" />
