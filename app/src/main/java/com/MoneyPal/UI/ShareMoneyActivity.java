@@ -29,6 +29,8 @@ public class ShareMoneyActivity extends AppCompatActivity {
         button.setOnClickListener(onClick());
         button = (Button) findViewById(R.id.add_participant);
         button.setOnClickListener(onClick());
+        button = (Button) findViewById(R.id.create_transaction);
+        button.setOnClickListener(onClick());
 
         addChildLayout(findViewById(R.id.payer_list));
         addChildLayout(findViewById(R.id.participant_list));
@@ -42,10 +44,12 @@ public class ShareMoneyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //mLayout.addView(createNewTextView(mEditText.getText().toString()));
-                if(v == findViewById(R.id.add_payer)){
+                if (v == findViewById(R.id.add_payer)) {
                     addChildLayout(findViewById(R.id.payer_list));
-                } else if (v == findViewById(R.id.add_participant)){
+                } else if (v == findViewById(R.id.add_participant)) {
                     addChildLayout(findViewById(R.id.participant_list));
+                } else if (v == findViewById(R.id.create_transaction)) {
+
                 } else {
 //                    ((LinearLayout) (v.getParent().getParent())).removeView(v);
                     ((LinearLayout) (v.getParent())).removeAllViews();
@@ -54,21 +58,21 @@ public class ShareMoneyActivity extends AppCompatActivity {
         };
     }
 
-    public void addChildLayout(View v){
+    public void addChildLayout(View v) {
         //Inflater service
-        LayoutInflater layoutInfralte=(LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInfralte = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //parent layout xml refrence
-        LinearLayout linearLayout=(LinearLayout) v;
+        LinearLayout linearLayout = (LinearLayout) v;
         //Child layout xml refrence
-        View view=layoutInfralte.inflate(R.layout.item_part_details, null);
+        View view = layoutInfralte.inflate(R.layout.item_part_details, null);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, Utility.FRIENDS);
-        Spinner participants =  (Spinner) view.findViewById(R.id.participant_name);
+        Spinner participants = (Spinner) view.findViewById(R.id.participant_name);
         participants.setAdapter(adapter);
 
-        CheckBox evenSplit =  (CheckBox) findViewById(R.id.even_split);
-        if(findViewById(R.id.participant_list) == v && evenSplit.isChecked()) {
+        CheckBox evenSplit = (CheckBox) findViewById(R.id.even_split);
+        if (findViewById(R.id.participant_list) == v && evenSplit.isChecked()) {
             EditText partAmount = (EditText) view.findViewById(R.id.participant_contribution);
             partAmount.setVisibility(View.INVISIBLE);
         }
@@ -80,7 +84,12 @@ public class ShareMoneyActivity extends AppCompatActivity {
     }
 
 
-    public void onSplitSettingChanged() {
-        Toast.makeText(this, "changed", Toast.LENGTH_SHORT);
+    public void onSplitSettingChanged(View v) {
+        makeToast("changed");
+    }
+
+    private void makeToast(String msg){
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+
     }
 }

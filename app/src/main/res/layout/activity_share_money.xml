@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -67,7 +68,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/even_split"
             android:layout_weight="0.4"
-            android:checked="true" />
+            android:checked="true"
+            android:onClick="onSplitSettingChanged"/>
 
         <Button
             android:id="@+id/add_participant"
@@ -94,8 +96,9 @@
             android:text="Create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/OK"
-            android:layout_weight="1" />
+            android:id="@+id/create_transaction"
+            android:layout_weight="1"
+            />
 
     </LinearLayout>
 
