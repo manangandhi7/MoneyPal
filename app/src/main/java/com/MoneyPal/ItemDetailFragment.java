@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.MoneyPal.Activity.ItemDetailActivity;
+import com.MoneyPal.Activity.ItemListActivity;
 import com.MoneyPal.dummy.DummyContent;
 
 /**
