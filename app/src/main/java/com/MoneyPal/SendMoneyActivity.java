@@ -9,9 +9,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.MoneyPal.Common.Utility;
 import com.google.gson.Gson;
-
-import org.json.*;
 
 public class SendMoneyActivity extends AppCompatActivity {
 
