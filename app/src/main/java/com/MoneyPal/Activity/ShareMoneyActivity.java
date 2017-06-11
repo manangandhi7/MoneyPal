@@ -1,6 +1,7 @@
 package com.MoneyPal.Activity;
 
 import android.content.Context;
+import android.support.test.espresso.core.deps.dagger.internal.DoubleCheckLazy;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.MoneyPal.Common.Utility;
+import com.MoneyPal.Inventory.Transaction;
 import com.MoneyPal.R;
 
 public class ShareMoneyActivity extends AppCompatActivity {
@@ -49,17 +51,43 @@ public class ShareMoneyActivity extends AppCompatActivity {
                 } else if (v == findViewById(R.id.add_participant)) {
                     addChildLayout(findViewById(R.id.participant_list));
                 } else if (v == findViewById(R.id.create_transaction)) {
-
+                    countEverything();
                 } else {
-//                    ((LinearLayout) (v.getParent().getParent())).removeView(v);
                     ((LinearLayout) (v.getParent())).removeAllViews();
                 }
             }
         };
     }
 
-    private void countEverything(){
+    private void countEverything() {
+        LinearLayout payers = (LinearLayout) findViewById(R.id.payer_list);
+        LinearLayout participants = (LinearLayout) findViewById(R.id.participant_list);
 
+        Transaction transaction = new Transaction();
+        //TODO validation of the fields
+        for (int i = 0; i < payers.getChildCount(); i++) {
+
+            Spinner spinner = (Spinner) payers.getChildAt(i).findViewById(R.id.participant_name);
+            String participant = spinner.getSelectedItem().toString();
+            EditText editText = (EditText) payers.getChildAt(i).findViewById(R.id.participant_contribution);
+            Double amount = Double.parseDouble(editText.getText().toString());
+            transaction.addPayer(participant, amount);
+        }
+
+        for (int i = 0; i < participants.getChildCount(); i++) {
+            //TODO get amount only if checked
+            Spinner spinner = (Spinner) participants.getChildAt(i).findViewById(R.id.participant_name);
+            String participant = spinner.getSelectedItem().toString();
+
+            CheckBox evenSplit = (CheckBox) findViewById(R.id.even_split);
+            if (!evenSplit.isChecked()) {
+                EditText editText = (EditText) participants.getChildAt(i).findViewById(R.id.participant_contribution);
+                Double amount = Double.parseDouble(editText.getText().toString());
+                transaction.addParticipant(participant, amount);
+            } else {
+                transaction.addParticipant(participant);
+            }
+        }
     }
 
     private void addChildLayout(View v) {
@@ -85,6 +113,9 @@ public class ShareMoneyActivity extends AppCompatActivity {
         button.setOnClickListener(onClick());
         //add child to parent
         linearLayout.addView(view);
+
+        //TODO IMP : even uneven split ma ek j drop down rakh, add karie etle e niche jatu re ane niche
+        // text box, participation ane remove button dekhay. on remove click, e participation jatu re.
     }
 
 
@@ -97,6 +128,5 @@ public class ShareMoneyActivity extends AppCompatActivity {
 
     private void makeToast(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-
     }
 }

@@ -35,13 +35,24 @@ public class Transaction {
 
     public HashMap<String, Double> payers;
     public HashMap<String, Double> participantsVaried;
-    public List<String> participants;
+    public HashSet<String> participants;
 
     public Transaction(){
         ID = 0;
         payers = new HashMap<>();
         participantsVaried = new HashMap<String, Double>();
-        participants = new ArrayList<String>();
+        participants = new HashSet<>();
     }
 
+    public void addPayer(String payer, double amount){
+        payers.put(payer, amount);
+    }
+
+    public void addParticipant(String participant, double amount){
+        participantsVaried.put(participant, amount);
+        addParticipant(participant);
+    }
+    public void addParticipant(String participant){
+        participants.add (participant);
+    }
 }
