@@ -33,11 +33,8 @@ public class ShareMoneyActivity extends AppCompatActivity {
         button.setOnClickListener(onClick());
         button = (Button) findViewById(R.id.create_transaction);
         button.setOnClickListener(onClick());
-
         addChildLayout(findViewById(R.id.payer_list));
         addChildLayout(findViewById(R.id.participant_list));
-
-
     }
 
     private View.OnClickListener onClick() {
@@ -88,6 +85,9 @@ public class ShareMoneyActivity extends AppCompatActivity {
                 transaction.addParticipant(participant);
             }
         }
+
+        transaction.calculateEverything();
+
     }
 
     private void addChildLayout(View v) {

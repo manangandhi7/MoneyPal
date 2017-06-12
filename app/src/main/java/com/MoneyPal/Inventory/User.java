@@ -14,5 +14,9 @@ public class User {
     public List<Account> accounts;
 
     Object profilePic;
+
+    public static User generateRandomUsers(){
+        return null;
+    }
 }
 

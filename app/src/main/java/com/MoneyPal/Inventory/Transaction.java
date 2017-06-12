@@ -4,7 +4,11 @@ package com.MoneyPal.Inventory;
  * Created by manan on 6/11/2017.
  */
 
+import android.support.test.espresso.core.deps.dagger.internal.DoubleCheckLazy;
+
 import java.util.*;
+
+import static com.MoneyPal.Inventory.Transaction.STATUS.Init;
 
 public class Transaction {
 
@@ -42,6 +46,8 @@ public class Transaction {
         payers = new HashMap<>();
         participantsVaried = new HashMap<String, Double>();
         participants = new HashSet<>();
+        status = Init;
+
     }
 
     public void addPayer(String payer, double amount){
@@ -55,4 +61,111 @@ public class Transaction {
     public void addParticipant(String participant){
         participants.add (participant);
     }
+
+    public boolean calculateEverything(){
+        HashMap<String, Double> payersBalance = new HashMap<String, Double>();
+        HashMap<String, HashMap<String, Double> > settlement = new HashMap<>();
+
+        double totalPaid = 0.0;
+        for(String user : payers.keySet()){
+            totalPaid += (Double) payers.get(user);
+        }
+
+        HashMap<String, Double> expenses = new HashMap<String, Double>();
+
+        double totalExpense = 0.0;
+        for(String user : participantsVaried.keySet()){
+            expenses.put(user, (Double) participantsVaried.get(user));
+            totalExpense += (Double) participantsVaried.get(user);
+        }
+
+        if (participantsVaried.size() == participants.size()){
+            if( totalPaid - totalExpense != 0){
+                return false;
+            }
+        } else if (totalPaid - totalExpense < 0) {
+            return false;
+        }
+
+        double bakiPerHead = (totalPaid - totalExpense) / (participantsVaried.size() - participants.size());
+
+        for(Object userObj : participants.toArray()){
+            String user = userObj.toString();
+            if(!participantsVaried.containsKey(user)){
+                expenses.put(user, new Double(bakiPerHead));
+            }
+        }
+
+        for (String user : payers.keySet()){
+            payersBalance.put(user, (Double) payers.get(user));
+        }
+
+        for (String user : payersBalance.keySet()){ //chalu ma value update thay che, joi le
+            if(!expenses.containsKey(user)){
+                continue;
+            }
+
+            double expense = (Double) expenses.get(user);
+            double paid = (Double) payersBalance.get(user);
+
+            if(paid > expense){
+                payersBalance.put(user, (Double) paid - expense);
+                expenses.remove(user);
+            } else if (expense > paid){
+                payersBalance.remove(user);
+                expenses.put(user, (Double) expense - paid);
+            } else {
+                expenses.remove(user);
+                payersBalance.remove(user);
+            }
+        }
+
+        Set <String> expenseSet =expenses.keySet();
+        for (String dendar : expenseSet){
+            double aapvana = (Double) expenses.get(dendar);
+            Set <String> payersSet =payersBalance.keySet();
+
+            for (String lendar : payersSet){
+                double levana = (Double) expenses.get(dendar);
+
+                if(levana > aapvana){
+                    payersBalance.put(lendar, (Double) levana - aapvana);
+                    expenses.remove(dendar);
+
+                    if (!settlement.containsKey(lendar)){
+                        settlement.put (lendar, new HashMap<String, Double>());
+                    }
+
+                    HashMap<String, Double> temp = (HashMap<String, Double>)settlement.get(lendar);
+                    temp.put(dendar, (Double) levana - aapvana);
+                    break;
+                } else if (aapvana > levana){
+                    payersBalance.remove(lendar);
+                    expenses.put(dendar, (Double) aapvana - levana);
+
+                    if (!settlement.containsKey(lendar)){
+                        settlement.put (lendar, new HashMap<String, Double>());
+                    }
+
+                    HashMap<String, Double> temp = (HashMap<String, Double>)settlement.get(lendar);
+                    temp.put(dendar, (Double) aapvana - levana);
+
+                } else {
+                    expenses.remove(dendar);
+                    payersBalance.remove(lendar);
+
+                    if (!settlement.containsKey(lendar)){
+                        settlement.put (lendar, new HashMap<String, Double>());
+                    }
+
+                    HashMap<String, Double> temp = (HashMap<String, Double>)settlement.get(lendar);
+                    temp.put(dendar, (Double) aapvana);
+                    break;
+                }
+            }
+        }
+
+        return true;
+    }
+
 }
