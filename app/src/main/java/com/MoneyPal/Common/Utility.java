@@ -26,7 +26,7 @@ public class Utility {
     public static final String Branchwise_Locker_status_Enquiry= "http://52.172.213.166:8080/sbi/Status/branchwise-locker-status_enquiry/Locker_Enquiry ";
 
     public static final String[] FRIENDS = new String[] {
-            "Add new", "Mohit", "Turi", "Kabir", "Ali", "Priya", "You"
+            "Mohit", "Turi", "Kabir", "Ali", "Priya"
     };
 
     //NEFT transfer strings

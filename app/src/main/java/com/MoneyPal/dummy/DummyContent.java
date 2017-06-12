@@ -1,9 +1,12 @@
 package com.MoneyPal.dummy;
 
+import com.MoneyPal.Common.Utility;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -27,8 +30,8 @@ public class DummyContent {
 
     static {
         // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
+        for (int i = 0; i < Utility.FRIENDS.length; i++) {
+            addItem(createDummyItem(Utility.FRIENDS[i]));
         }
     }
 
@@ -37,14 +40,15 @@ public class DummyContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+    private static DummyItem createDummyItem(String friend) {
+        return new DummyItem(String.valueOf(friend), "Item " + friend, makeDetails(friend));
     }
 
-    private static String makeDetails(int position) {
+    private static String makeDetails(String friend) {
         StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
+        builder.append("Details about Item: ").append(friend);
+        Random r = new Random();
+        for (int i = 0; i < r.nextInt(7); i++) {
             builder.append("\nMore details information here.");
         }
         return builder.toString();
