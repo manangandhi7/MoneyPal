@@ -120,27 +120,39 @@ public class Transaction {
             }
         }
 
-        Set <String> expenseSet =expenses.keySet();
-        for (String dendar : expenseSet){
-            double aapvana = (Double) expenses.get(dendar);
-            Set <String> payersSet =payersBalance.keySet();
+//        Set <String> expenseSet = expenses.keySet();
 
-            for (String lendar : payersSet){
-                double levana = (Double) expenses.get(dendar);
+        Iterator<Map.Entry<String,Double>> dendarIter = expenses.entrySet().iterator();
+
+        while (dendarIter.hasNext()){
+            Map.Entry<String,Double> dendarPair = dendarIter.next();
+            double aapvana = (Double) dendarPair.getValue();
+            String dendar = dendarPair.getKey();
+
+            Iterator<Map.Entry<String,Double>> lendarIter  =payersBalance.entrySet().iterator();
+
+            while (lendarIter.hasNext()){
+                Map.Entry<String,Double> lendarPair = lendarIter.next();
+
+                double levana = (Double) lendarPair.getValue();
+                String lendar = lendarPair.getKey();
 
                 if(levana > aapvana){
                     payersBalance.put(lendar, (Double) levana - aapvana);
-                    expenses.remove(dendar);
+                    //expenses.remove(dendar);
+                    dendarIter.remove();
 
                     if (!settlement.containsKey(lendar)){
                         settlement.put (lendar, new HashMap<String, Double>());
                     }
 
                     HashMap<String, Double> temp = (HashMap<String, Double>)settlement.get(lendar);
-                    temp.put(dendar, (Double) levana - aapvana);
+                    temp.put(dendar, (Double) aapvana);
                     break;
                 } else if (aapvana > levana){
-                    payersBalance.remove(lendar);
+                    //payersBalance.remove(lendar);
+                    lendarIter.remove();
+
                     expenses.put(dendar, (Double) aapvana - levana);
 
                     if (!settlement.containsKey(lendar)){
@@ -148,11 +160,14 @@ public class Transaction {
                     }
 
                     HashMap<String, Double> temp = (HashMap<String, Double>)settlement.get(lendar);
-                    temp.put(dendar, (Double) aapvana - levana);
+                    temp.put(dendar, (Double) levana);
 
                 } else {
-                    expenses.remove(dendar);
-                    payersBalance.remove(lendar);
+                    //expenses.remove(dendar);
+                    dendarIter.remove();
+                    //payersBalance.remove(lendar);
+                    lendarIter.remove();
+
 
                     if (!settlement.containsKey(lendar)){
                         settlement.put (lendar, new HashMap<String, Double>());
