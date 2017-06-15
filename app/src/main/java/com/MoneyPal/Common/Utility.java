@@ -29,6 +29,20 @@ public class Utility {
             "Mohit", "Turi", "Kabir", "Ali", "Priya"
     };
 
+    public static final String SendToFCM = "SendToFCM";
+    public static final String SendToSBI = "SendToSBI";
+    public static final String FCM_URL = "https://fcm.googleapis.com/fcm/send";
+    public static final String AUTHORIZATION_STRING = "Authorization";
+    public static final String AUTHORIZATION_KEY = "key=AAAAbije9rk:APA91bHGo5e_N8WZuiriic-enefLqXDZkd2448wi7ttBOUGYZucaosm672SnsTOlm8Hme0XJnBnii8O6dmEbJnOvPudztW5mHrEWM1wqzwoNQhM_-Y3jAaObYC_2gPmntUi7bXsHJrl7";
+    public static final String SBI_API_KEY_STRING = "apikey";
+    public static final String SBI_API_KEY = "VP81nkyVLqrNgrf";
+
+
+
+
+    //Authorization:key=AIzaSyZ-1u...0GBYzPu7Udno5aA
+
+
     //NEFT transfer strings
     /*
     "BENFACCTNO":"00000030001512992", "BENFNAME":"Mr.Sbi User1", "MOBNUMBER":"8452824672", "RECBNKIFSC":"HDFC0000001","REMNAME": "Mr.Sbi ExternalUser1","REMTACCTNO": "00000010001458660","SNDIFSC": "SBIN0000437","TXNAMT": "5000"

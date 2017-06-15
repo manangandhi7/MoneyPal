@@ -12,7 +12,7 @@ import com.firebase.jobdispatcher.JobService;
 
 public class JobServiceFCM extends JobService {
 
-    private static final String TAG = "MyJobService";
+    private static final String TAG = "JobServiceFCM";
 
     @Override
     public boolean onStartJob(JobParameters jobParameters) {

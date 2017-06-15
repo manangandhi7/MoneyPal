@@ -8,6 +8,8 @@ import java.util.HashMap;
 
 public class Storage {
 
+    private static final String TAG = "Storage";
+
     HashMap<String, User> users;
 
     public boolean AddUser(String email, int phoneNo, String password) {

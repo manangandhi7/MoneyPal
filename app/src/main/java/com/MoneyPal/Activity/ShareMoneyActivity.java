@@ -25,6 +25,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 public class ShareMoneyActivity extends AppCompatActivity {
 
+    private static final String TAG = "ShareMoneyActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +124,11 @@ public class ShareMoneyActivity extends AppCompatActivity {
 
         //TODO IMP : even uneven split ma ek j drop down rakh, add karie etle e niche jatu re ane niche
         // text box, participation ane remove button dekhay. on remove click, e participation jatu re.
+
+        //TODO very IMP, send money wala UI ma bank details vade pan transfer karva devu pade.
+        //TODO send and request ma same j UI pan khali request money ma reason hoy ane default ma bija options set hoy
+
+        //TODO on create, select a random account number and IFSC from the given list for each profile and save it in extras for teh remaining presentation
     }
 
 

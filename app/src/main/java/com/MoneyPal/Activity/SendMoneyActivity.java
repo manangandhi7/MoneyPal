@@ -10,10 +10,18 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.MoneyPal.Common.Utility;
+import com.MoneyPal.Inventory.Notification;
 import com.MoneyPal.R;
 import com.google.gson.Gson;
 
+import org.json.JSONObject;
+
+import static com.MoneyPal.Common.Utility.SendToFCM;
+import static com.MoneyPal.Common.Utility.SendToSBI;
+
 public class SendMoneyActivity extends AppCompatActivity {
+
+    private static final String TAG = "SendMoneyActivity";
 
     //public final String url = "http://52.172.213.166:8080/sbi/Account_List/api/EnqBancsAccountsList/";
 
@@ -37,8 +45,19 @@ public class SendMoneyActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("hell", "how r");
                 try {
-                    String s = new com.MoneyPal.ServerConnection().execute(Utility.Account_List, "{\"AccountNumber\": \"30001512992\" }").get();
+
+                    JSONObject json = new JSONObject();
+                    json.put("AccountNumber", "30001512992");
+                    String s = new com.MoneyPal.ServerConnection().execute(Utility.Account_List, json.toString(), SendToSBI).get();
+                    //String s = new com.MoneyPal.ServerConnection().execute(Utility.Account_List, "{\"AccountNumber\": \"30001512992\" }").get();
                     Log.d("tag", s);
+
+                    Notification notification = new Notification();
+
+
+                    String s2 = new com.MoneyPal.ServerConnection().execute(Utility.FCM_URL, notification.getMyJSON().toString(), SendToFCM).get();
+
+                    Log.d("tag", s2);
                 } catch (Exception e) {
                     Log.e("error", e.toString());
                 }

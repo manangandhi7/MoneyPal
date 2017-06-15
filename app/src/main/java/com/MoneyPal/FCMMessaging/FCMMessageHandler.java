@@ -11,11 +11,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.MoneyPal.Activity.ShareMoneyActivity;
-import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.R;
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.firebase.jobdispatcher.Job;
+
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -26,7 +23,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class FCMMessageHandler extends FirebaseMessagingService {
 
-    private static final String TAG = "MyFirebaseMsgService";
+    private static final String TAG = "FCMMessageHandler";
 
     /**
      * Called when message is received.
@@ -46,7 +43,7 @@ public class FCMMessageHandler extends FirebaseMessagingService {
         // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
         // [END_EXCLUDE]
 
-        // TODO(developer): Handle FCM messages here.
+        // TODO(developer): Handle SendToFCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
@@ -57,7 +54,7 @@ public class FCMMessageHandler extends FirebaseMessagingService {
 
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
-                //scheduleJob();
+                scheduleJob();
             } else {
                 // Handle message within 10 seconds
                 handleNow();
@@ -70,7 +67,7 @@ public class FCMMessageHandler extends FirebaseMessagingService {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
-        // Also if you intend on generating your own notifications as a result of a received FCM
+        // Also if you intend on generating your own notifications as a result of a received SendToFCM
         // message, here is where that should be initiated. See sendNotification method below.
     }
     // [END receive_message]
@@ -78,16 +75,20 @@ public class FCMMessageHandler extends FirebaseMessagingService {
     /**
      * Schedule a job using FirebaseJobDispatcher.
      */
-//    private void scheduleJob() {
-//        // [START dispatch_job]
+    private void scheduleJob() {
+
+        Log.d(TAG, "message with payload");
+
+
+        // [START dispatch_job]
 //        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
 //        Job myJob = dispatcher.newJobBuilder()
 //                .setService(JobServiceFCM.class)
 //                .setTag("my-job-tag")
 //                .build();
 //        dispatcher.schedule(myJob);
-//        // [END dispatch_job]
-//    }
+        // [END dispatch_job]
+    }
 
     /**
      * Handle time allotted to BroadcastReceivers.
@@ -97,9 +98,9 @@ public class FCMMessageHandler extends FirebaseMessagingService {
     }
 
     /**
-     * Create and show a simple notification containing the received FCM message.
+     * Create and show a simple notification containing the received SendToFCM message.
      *
-     * @param messageBody FCM message body received.
+     * @param messageBody SendToFCM message body received.
      */
     private void sendNotification(String messageBody) {
         Intent intent = new Intent(this, ShareMoneyActivity.class);
@@ -110,7 +111,7 @@ public class FCMMessageHandler extends FirebaseMessagingService {
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_menu_manage)
-                .setContentTitle("FCM Message")
+                .setContentTitle("SendToFCM Message")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
