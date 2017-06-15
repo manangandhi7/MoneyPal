@@ -5,6 +5,7 @@ import android.support.test.espresso.core.deps.dagger.internal.DoubleCheckLazy;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.MoneyPal.Common.Utility;
 import com.MoneyPal.Inventory.Transaction;
 import com.MoneyPal.R;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class ShareMoneyActivity extends AppCompatActivity {
 
@@ -35,6 +37,10 @@ public class ShareMoneyActivity extends AppCompatActivity {
         button.setOnClickListener(onClick());
         addChildLayout(findViewById(R.id.payer_list));
         addChildLayout(findViewById(R.id.participant_list));
+
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d("token", refreshedToken);
+        makeToast(refreshedToken);
     }
 
     private View.OnClickListener onClick() {
