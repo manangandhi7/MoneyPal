@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.MoneyPal.Activity.ShareMoneyActivity;
+import com.MoneyPal.Common.Utility;
 import com.MoneyPal.R;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -46,7 +47,6 @@ public class FCMMessageHandler extends FirebaseMessagingService {
         // TODO(developer): Handle SendToFCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, "From: " + remoteMessage.getFrom());
-
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {

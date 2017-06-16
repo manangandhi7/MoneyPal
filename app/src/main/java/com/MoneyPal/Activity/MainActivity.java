@@ -18,7 +18,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.MoneyPal.Common.Utility;
 import com.MoneyPal.ItemDetailFragment;
@@ -56,6 +59,13 @@ implements NavigationView.OnNavigationItemSelectedListener {
             }
         });
 
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.fab);
+        button.setOnClickListener(onClick());
+        button = (FloatingActionButton) findViewById(R.id.fab2);
+        button.setOnClickListener(onClick());
+        button = (FloatingActionButton) findViewById(R.id.fab3);
+        button.setOnClickListener(onClick());
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -79,7 +89,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
         FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_CATEGORY);
         if(getToken() != null) {
-            Utility.makeToast(getApplicationContext(), getToken());
+            makeToast(getToken());
         }
 
     }
@@ -118,6 +128,35 @@ implements NavigationView.OnNavigationItemSelectedListener {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private View.OnClickListener onClick() {
+        return new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //mLayout.addView(createNewTextView(mEditText.getText().toString()));
+                if (v == findViewById(R.id.fab)) {
+                    Intent intent = new Intent(getApplicationContext(), SendMoneyActivity.class);
+                    //EditText editText = (EditText) findViewById(R.id.editText);
+                    //String message = editText.getText().toString();
+                    //intent.putExtra(EXTRA_MESSAGE, message);
+                    startActivity(intent);
+                } else if (v == findViewById(R.id.fab2)) {
+                    Intent intent = new Intent(getApplicationContext(), SendMoneyActivity.class);
+                    //EditText editText = (EditText) findViewById(R.id.editText);
+                    //String message = editText.getText().toString();
+                    //intent.putExtra(EXTRA_MESSAGE, message);
+                    startActivity(intent);
+                } else if (v == findViewById(R.id.fab3)) {
+                    Intent intent = new Intent(getApplicationContext(), ShareMoneyActivity.class);
+                    //EditText editText = (EditText) findViewById(R.id.editText);
+                    //String message = editText.getText().toString();
+                    //intent.putExtra(EXTRA_MESSAGE, message);
+                    startActivity(intent);
+                }
+            }
+        };
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -212,5 +251,10 @@ implements NavigationView.OnNavigationItemSelectedListener {
             }
         }
     }
+
+    private void makeToast(String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    }
+
 
 }

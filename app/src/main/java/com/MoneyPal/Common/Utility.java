@@ -54,9 +54,7 @@ public class Utility {
         return refreshedToken;
     }
 
-    public static void makeToast(Context context, String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-    }
+
     //Authorization:key=AIzaSyZ-1u...0GBYzPu7Udno5aA
 
 

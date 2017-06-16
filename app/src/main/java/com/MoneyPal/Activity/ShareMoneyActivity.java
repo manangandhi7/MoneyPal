@@ -23,7 +23,6 @@ import com.MoneyPal.Inventory.Transaction;
 import com.MoneyPal.R;
 import com.google.firebase.iid.FirebaseInstanceId;
 
-import static com.MoneyPal.Common.Utility.makeToast;
 
 public class ShareMoneyActivity extends AppCompatActivity {
 
@@ -44,7 +43,7 @@ public class ShareMoneyActivity extends AppCompatActivity {
 
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
         Log.d("token", refreshedToken);
-        makeToast(getApplicationContext(), refreshedToken);
+        makeToast( refreshedToken);
     }
 
     private View.OnClickListener onClick() {
@@ -139,6 +138,10 @@ public class ShareMoneyActivity extends AppCompatActivity {
         LinearLayout l = (LinearLayout) findViewById(R.id.participant_list);
         l.removeAllViews();
         addChildLayout(l);
+    }
+
+    private void makeToast(String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 
 
