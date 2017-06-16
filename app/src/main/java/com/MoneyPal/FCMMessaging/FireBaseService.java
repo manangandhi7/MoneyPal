@@ -1,3 +1,5 @@
+package com.MoneyPal.FCMMessaging;
+
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;

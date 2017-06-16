@@ -1,5 +1,11 @@
 package com.MoneyPal.Common;
 
+import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
+
 /**
  * Created by manan on 6/10/2017.
  */
@@ -40,7 +46,15 @@ public class Utility {
     public static final String GLOBAL_CATEGORY = "global";
 
 
+    public static String getToken() {
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d("token", refreshedToken);
+        return refreshedToken;
+    }
 
+    public static void makeToast(Context context, String msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+    }
     //Authorization:key=AIzaSyZ-1u...0GBYzPu7Udno5aA
 
 

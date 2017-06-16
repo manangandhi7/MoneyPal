@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.MoneyPal.Common.Utility;
 import com.MoneyPal.ItemDetailFragment;
 import com.MoneyPal.R;
 import com.MoneyPal.dummy.DummyContent;
@@ -28,8 +29,9 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.util.List;
 
 import static com.MoneyPal.Common.Utility.GLOBAL_CATEGORY;
+import static com.MoneyPal.Common.Utility.getToken;
 
-public class SettingsActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
 implements NavigationView.OnNavigationItemSelectedListener {
 
     /**
@@ -76,11 +78,12 @@ implements NavigationView.OnNavigationItemSelectedListener {
         }
 
         FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_CATEGORY);
+        Utility.makeToast(getApplicationContext(), getToken());
 
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SettingsActivity.SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+        recyclerView.setAdapter(new MainActivity.SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
     }
 
     @Override
@@ -140,7 +143,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
         return true;
     }
     public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SettingsActivity.SimpleItemRecyclerViewAdapter.ViewHolder> {
+            extends RecyclerView.Adapter<MainActivity.SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<DummyContent.DummyItem> mValues;
 
@@ -149,14 +152,14 @@ implements NavigationView.OnNavigationItemSelectedListener {
         }
 
         @Override
-        public SettingsActivity.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public MainActivity.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_list_content, parent, false);
-            return new SettingsActivity.SimpleItemRecyclerViewAdapter.ViewHolder(view);
+            return new MainActivity.SimpleItemRecyclerViewAdapter.ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final SettingsActivity.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(final MainActivity.SimpleItemRecyclerViewAdapter.ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).id);
             holder.mContentView.setText(mValues.get(position).content);
