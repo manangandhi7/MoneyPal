@@ -37,6 +37,7 @@ public class Utility {
     public static final String SBI_API_KEY_STRING = "apikey";
     public static final String SBI_API_KEY = "VP81nkyVLqrNgrf";
 
+    public static final String GLOBAL_CATEGORY = "global";
 
 
 

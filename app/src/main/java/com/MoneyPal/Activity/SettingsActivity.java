@@ -23,8 +23,11 @@ import android.widget.TextView;
 import com.MoneyPal.ItemDetailFragment;
 import com.MoneyPal.R;
 import com.MoneyPal.dummy.DummyContent;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.List;
+
+import static com.MoneyPal.Common.Utility.GLOBAL_CATEGORY;
 
 public class SettingsActivity extends AppCompatActivity
 implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,8 +63,6 @@ implements NavigationView.OnNavigationItemSelectedListener {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -71,8 +72,10 @@ implements NavigationView.OnNavigationItemSelectedListener {
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
             // activity should be in two-pane mode.
-            //mTwoPane = true;
+            mTwoPane = true;
         }
+
+        FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_CATEGORY);
 
     }
 

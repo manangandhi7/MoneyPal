@@ -41,7 +41,7 @@ public class DummyContent {
     }
 
     private static DummyItem createDummyItem(String friend) {
-        return new DummyItem(String.valueOf(friend), "Item " + friend, makeDetails(friend));
+        return new DummyItem(String.valueOf(friend), "+ " + new Random().nextInt(500), makeDetails(friend));
     }
 
     private static String makeDetails(String friend) {
