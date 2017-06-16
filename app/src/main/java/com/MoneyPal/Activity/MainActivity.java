@@ -2,7 +2,9 @@ package com.MoneyPal.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,7 +33,9 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.List;
 
+import static com.MoneyPal.Common.IDGenerator.generateUniqueID;
 import static com.MoneyPal.Common.Utility.GLOBAL_CATEGORY;
+import static com.MoneyPal.Common.Utility.UNIQUE_ID;
 import static com.MoneyPal.Common.Utility.getToken;
 
 public class MainActivity extends AppCompatActivity
@@ -42,6 +46,8 @@ implements NavigationView.OnNavigationItemSelectedListener {
      * device.
      */
     private boolean mTwoPane;
+    private SharedPreferences mPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,10 +94,21 @@ implements NavigationView.OnNavigationItemSelectedListener {
         }
 
         FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_CATEGORY);
-        if(getToken() != null) {
-            makeToast(getToken());
+//        if(getToken() != null) {
+//            makeToast(getToken());
+//        }
+
+        //unique ID
+
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String uniqueID = mPreferences.getString(UNIQUE_ID, "");
+
+        if (uniqueID == "") {
+            uniqueID = generateUniqueID();
+            mPreferences.edit().putString(UNIQUE_ID, uniqueID);
         }
 
+        makeToast(uniqueID);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

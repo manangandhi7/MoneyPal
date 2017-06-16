@@ -44,6 +44,7 @@ public class Utility {
     public static final String SBI_API_KEY = "VP81nkyVLqrNgrf";
 
     public static final String GLOBAL_CATEGORY = "global";
+    public static final String UNIQUE_ID = "unique_id";
 
 
     public static String getToken() {
