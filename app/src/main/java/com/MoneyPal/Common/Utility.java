@@ -48,7 +48,9 @@ public class Utility {
 
     public static String getToken() {
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d("token", refreshedToken);
+//        if (refreshedToken != null) {
+//            Log.d("token", refreshedToken);
+//        }
         return refreshedToken;
     }
 

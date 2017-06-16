@@ -78,7 +78,9 @@ implements NavigationView.OnNavigationItemSelectedListener {
         }
 
         FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_CATEGORY);
-        Utility.makeToast(getApplicationContext(), getToken());
+        if(getToken() != null) {
+            Utility.makeToast(getApplicationContext(), getToken());
+        }
 
     }
 
