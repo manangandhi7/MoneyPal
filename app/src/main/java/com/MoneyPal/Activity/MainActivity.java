@@ -322,12 +322,18 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void makeToast(String msg) {
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-    private void settleKar(View v) {
-        //parent layout xml refrence
+    public void settleKar(View v) {
         Button button = (Button) v;
+        //show alert dialog
+
+        //handle alert events
+
+        //redraw the UI
+
+        //voila
 
         makeToast("clicked");
     }
