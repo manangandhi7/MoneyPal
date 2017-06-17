@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.MoneyPal.R;
-import com.MoneyPal.dummy.DummyContentDostar;
+import com.MoneyPal.dummy.DostarContent;
 
 /**
  * A fragment representing a single Dostar detail screen.
@@ -28,7 +28,7 @@ public class DostarDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private DummyContentDostar.DummyItem mItem;
+    private DostarContent.DostarItem mItem;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -45,7 +45,7 @@ public class DostarDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = DummyContentDostar.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+            mItem = DostarContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);

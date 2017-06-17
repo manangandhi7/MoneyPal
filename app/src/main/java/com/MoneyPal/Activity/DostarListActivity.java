@@ -19,7 +19,7 @@ import android.view.MenuItem;
 
 import com.MoneyPal.R;
 
-import com.MoneyPal.dummy.DummyContentDostar;
+import com.MoneyPal.dummy.DostarContent;
 
 import java.util.List;
 
@@ -93,15 +93,18 @@ public class DostarListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContentDostar.ITEMS));
+
+        DostarContent dostarContent = new DostarContent();
+
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(dostarContent.ITEMS));
     }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<DummyContentDostar.DummyItem> mValues;
+        private final List<DostarContent.DostarItem> mValues;
 
-        public SimpleItemRecyclerViewAdapter(List<DummyContentDostar.DummyItem> items) {
+        public SimpleItemRecyclerViewAdapter(List<DostarContent.DostarItem> items) {
             mValues = items;
         }
 
@@ -149,7 +152,7 @@ public class DostarListActivity extends AppCompatActivity {
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public DummyContentDostar.DummyItem mItem;
+            public DostarContent.DostarItem mItem;
 
             public ViewHolder(View view) {
                 super(view);

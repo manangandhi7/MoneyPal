@@ -73,31 +73,31 @@ public class Storage {
         for (int i = 0; i < n - 3; i++) {
             int random = r.nextInt(POSSIBLE_FRIENDS.length - 1);
 
-            if(!validUser(POSSIBLE_FRIENDS[i], 567)){ //too expensive operation!
+            if(!validUser(POSSIBLE_FRIENDS[random], 567)){ //too expensive operation!
                 i--;
                 continue;
             } else {
-                AddUser(POSSIBLE_FRIENDS[i], 1212121212, "");
+                AddUser(POSSIBLE_FRIENDS[random], 1212121212, "");
             }
         }
     }
 
     private void addRandomTransactions(int n) {
-        for (int i = 0; i < 3; ++i) {
-            AddUser(POSSIBLE_FRIENDS[i], 1212121212, "");
-        }
-
-        Random r = new Random();
-        for (int i = 0; i < n - 3; i++) {
-            int random = r.nextInt(POSSIBLE_FRIENDS.length - 1);
-
-            if (!validUser(POSSIBLE_FRIENDS[i], 567)) { //too expensive operation!
-                i--;
-                continue;
-            } else {
-                AddUser(POSSIBLE_FRIENDS[i], 1212121212, "");
-            }
-        }
+//        for (int i = 0; i < 3; ++i) {
+//            AddUser(POSSIBLE_FRIENDS[i], 1212121212, "");
+//        }
+//
+//        Random r = new Random();
+//        for (int i = 0; i < n - 3; i++) {
+//            int random = r.nextInt(POSSIBLE_FRIENDS.length - 1);
+//
+//            if (!validUser(POSSIBLE_FRIENDS[i], 567)) { //too expensive operation!
+//                i--;
+//                continue;
+//            } else {
+//                AddUser(POSSIBLE_FRIENDS[i], 1212121212, "");
+//            }
+//        }
     }
 
     public boolean AddAccount(String userID, String accountNo, String IFSC, String uniqueID) {
@@ -119,7 +119,7 @@ public class Storage {
     public boolean validUser(String email, int phoneNo){
         boolean found = false;
         for (User user : users.values()){
-            if(user.email == email || user.phoneNo == phoneNo){
+            if(user.email == email){
                 found = true;
                 break;
             }
@@ -134,6 +134,10 @@ public class Storage {
 
     public boolean userExists(String id){
         return users.containsKey(id);
+    }
+
+    public HashMap<String, User> getUsers(){
+        return users;
     }
 }
 
