@@ -69,7 +69,8 @@ public class ItemListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+        DummyContent dummyContent = DummyContent.getInstance();
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(dummyContent.ITEMS));
     }
 
     public class SimpleItemRecyclerViewAdapter

@@ -1,6 +1,7 @@
 package com.MoneyPal.dummy;
 
 import com.MoneyPal.Common.Utility;
+import com.MoneyPal.Inventory.Storage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,32 +20,53 @@ public class DummyContent {
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+    public List<DummyItem> ITEMS = new ArrayList<DummyItem>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
+    public Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    private static final int COUNT = 25;
+    private static DummyContent instance;
 
-    static {
-        // Add some sample items.
-        for (int i = 0; i < Utility.FRIENDS.length; i++) {
-            addItem(createDummyItem(Utility.FRIENDS[i]));
+    private DummyContent() {
+
+        HashMap userMap = Storage.getInstance().getUsers();
+
+        int i = 1;
+
+        for (Object userObj : userMap.keySet()) {
+            addItem(createDummyItem(userObj.toString()));
         }
     }
 
-    private static void addItem(DummyItem item) {
+    public static DummyContent getInstance(){
+        if(instance == null){
+            instance = new DummyContent();
+        }
+
+        return instance;
+    }
+
+    private  void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(String friend) {
-        return new DummyItem(String.valueOf(friend), "+ " + new Random().nextInt(500), makeDetails(friend));
+    private  DummyItem createDummyItem(String friend) {
+
+        Random r = new Random();
+        int number = r.nextInt();
+
+        String sign = "+";
+        if (number % 2 == 0){
+            sign = "-";
+        }
+
+        return new DummyItem(String.valueOf(friend), sign + new Random().nextInt(500), makeDetails(friend));
     }
 
-    private static String makeDetails(String friend) {
+    private  String makeDetails(String friend) {
         StringBuilder builder = new StringBuilder();
         builder.append("Details about Item: ").append(friend);
         Random r = new Random();
@@ -57,7 +79,7 @@ public class DummyContent {
     /**
      * A dummy item representing a piece of content.
      */
-    public static class DummyItem {
+    public  class DummyItem {
         public final String id;
         public final String content;
         public final String details;

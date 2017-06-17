@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.MoneyPal.Common.Utility;
+import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.Inventory.Transaction;
 import com.MoneyPal.R;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -109,8 +110,11 @@ public class ShareMoneyActivity extends AppCompatActivity {
         //Child layout xml refrence
         View view = layoutInfralte.inflate(R.layout.item_part_details, null);
 
+
+        ;
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_dropdown_item_1line, Utility.FRIENDS);
+                android.R.layout.simple_dropdown_item_1line, Storage.getInstance().getUsersArray());
         Spinner participants = (Spinner) view.findViewById(R.id.participant_name);
         participants.setAdapter(adapter);
 

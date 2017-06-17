@@ -11,6 +11,7 @@ import android.widget.Spinner;
 
 import com.MoneyPal.Common.Utility;
 import com.MoneyPal.Inventory.Notification;
+import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.R;
 import com.google.gson.Gson;
 
@@ -31,7 +32,7 @@ public class SendMoneyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_send_money);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_dropdown_item_1line, Utility.FRIENDS);
+                android.R.layout.simple_dropdown_item_1line, Storage.getInstance().getUsersArray());
         //TODO drop down menu will be better, slect karo etle list popup thay, wither select existing one or create new one
         Spinner textView = (Spinner)
                 findViewById(R.id.spinner);

@@ -28,5 +28,5 @@
         android:layout_gravity="right"
         android:text="Settle"
         android:layout_weight="1"
-        android:onClick="settle(this)"/>
+        android:onClick="settleKar"/>
 </LinearLayout>

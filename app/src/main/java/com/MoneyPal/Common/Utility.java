@@ -31,10 +31,6 @@ public class Utility {
     public static final String Customer_Locker_Enquiry= "http://52.172.213.166:8080/sbi/Locker/customerLocker/enquiry ";
     public static final String Branchwise_Locker_status_Enquiry= "http://52.172.213.166:8080/sbi/Status/branchwise-locker-status_enquiry/Locker_Enquiry ";
 
-    public static final String[] FRIENDS = new String[] {
-            "Mohit", "Turi", "Kabir", "Ali", "Priya"
-    };
-
     public static final String SendToFCM = "SendToFCM";
     public static final String SendToSBI = "SendToSBI";
     public static final String FCM_URL = "https://fcm.googleapis.com/fcm/send";

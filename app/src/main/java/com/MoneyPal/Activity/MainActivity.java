@@ -22,10 +22,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.ItemDetailFragment;
 import com.MoneyPal.R;
 import com.MoneyPal.dummy.DummyContent;
@@ -172,7 +178,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new MainActivity.SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+        DummyContent dummyContent = DummyContent.getInstance();
+        recyclerView.setAdapter(new MainActivity.SimpleItemRecyclerViewAdapter(dummyContent.ITEMS));
     }
 
     @Override
@@ -316,5 +323,12 @@ public class MainActivity extends AppCompatActivity
 
     private void makeToast(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    private void settleKar(View v) {
+        //parent layout xml refrence
+        Button button = (Button) v;
+
+        makeToast("clicked");
     }
 }

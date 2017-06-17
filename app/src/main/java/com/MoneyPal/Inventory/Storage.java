@@ -4,10 +4,12 @@ package com.MoneyPal.Inventory;
  * Created by manan on 6/11/2017.
  */
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class Storage {
 
@@ -138,6 +140,12 @@ public class Storage {
 
     public HashMap<String, User> getUsers(){
         return users;
+    }
+
+    public String[] getUsersArray(){
+        Set<String> s = users.keySet();
+        return s.toArray(new String[s.size()]);
+
     }
 
 }
