@@ -93,6 +93,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.MoneyPal.Activity.DostarListActivity" />
         </activity>
+        <activity
+            android:name=".Activity.ProfileActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

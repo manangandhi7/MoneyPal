@@ -32,4 +32,5 @@
     <string name="title_friend_detail">Friend Detail</string>
     <string name="title_dostar_list">Dostaro</string>
     <string name="title_dostar_detail">Dostar Detail</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 </resources>

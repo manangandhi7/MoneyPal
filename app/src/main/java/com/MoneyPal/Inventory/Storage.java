@@ -139,5 +139,6 @@ public class Storage {
     public HashMap<String, User> getUsers(){
         return users;
     }
+
 }
 

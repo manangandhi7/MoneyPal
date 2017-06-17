@@ -1,5 +1,6 @@
 package com.MoneyPal.Activity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +38,7 @@ import java.util.List;
 import static com.MoneyPal.Common.IDGenerator.generateUniqueID;
 import static com.MoneyPal.Common.Utility.GLOBAL_CATEGORY;
 import static com.MoneyPal.Common.Utility.UNIQUE_ID;
+import static com.MoneyPal.Common.Utility.USERNAME;
 import static com.MoneyPal.Common.Utility.getToken;
 
 public class MainActivity extends AppCompatActivity
@@ -110,6 +113,56 @@ public class MainActivity extends AppCompatActivity
         }
 
         makeToast(uniqueID);
+
+
+
+        View v = navigationView.getHeaderView(0);
+        TextView textView = (TextView) v.findViewById(R.id.nav_unique_id);
+
+        textView.setText(uniqueID);
+
+        String userName = mPreferences.getString(USERNAME, "");
+
+        if (userName == "") {
+            userName = getUserName();
+            SharedPreferences.Editor editor = mPreferences.edit();
+            editor.putString(USERNAME, userName);
+            editor.commit();
+        }
+
+        TextView textView2 = (TextView) v.findViewById(R.id.nav_user_name);
+        textView2.setText(userName);
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog);
+        dialog.setTitle("Dialog box");
+
+        Button button = (Button) dialog.findViewById(R.id.Button01);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private String getUserName(){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+//
+//        builder.setMessage("message")
+//                .setTitle("title");
+//
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+        return "user";
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -164,14 +217,20 @@ public class MainActivity extends AppCompatActivity
         };
     }
 
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.nav_profile) {
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            //EditText editText = (EditText) findViewById(R.id.editText);
+            //String message = editText.getText().toString();
+            //intent.putExtra(EXTRA_MESSAGE, message);
+            startActivity(intent);
         } else if (id == R.id.nav_dostaro) {
             Intent intent = new Intent(getApplicationContext(), DostarListActivity.class);
             //EditText editText = (EditText) findViewById(R.id.editText);

@@ -45,6 +45,7 @@ public class Utility {
 
     public static final String GLOBAL_CATEGORY = "global";
     public static final String UNIQUE_ID = "unique_id";
+    public static final String USERNAME = "user_name";
 
 
     public static String getToken() {
