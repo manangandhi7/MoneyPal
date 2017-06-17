@@ -12,12 +12,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\jars\classes.jar"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\11.0.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-messaging-10.0.1_d978ee74c35d0319c45571252fdad27913262a74.jar" />
+        sha1="e72c498ef3e345135b6bfdf7fc83c6b905228ade">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-11.0.0_55a054a3a10824b039e02034c8ec7f60b00156f5.jar" />
     </item>
     <item
         is-multidex="false"
@@ -45,213 +45,6 @@
         revision="25.0.1"
         sha1="479c1e06db31c432330183f5cae684163f186146">
         <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\javax.annotation-api-1.2_417ae04461d001c7af2fa3f59b827b6af63376c1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\hamcrest-core-1.3_8c4f3d0ed01507752a91ad74a0d8203ad717f2b1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support.test.espresso\espresso-idling-resource\2.2.2\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="a890ee8445927649d9ed50f625a315d8758688be">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support.test.espresso-espresso-idling-resource-2.2.2_ee3af8141337b6d55c6d6bb59abdefa5745ee8a0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\com.squareup\javawriter\2.1.1\67ff45d9ae02e583d0f9b3432a5ebbe05c30c966\javawriter-2.1.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="67ff45d9ae02e583d0f9b3432a5ebbe05c30c966">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\javawriter-2.1.1_4f83cf780bddd0fdd17606c2910697029dbf4ceb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support.test\rules\0.5\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="7e11799d8a26bfa5d48acafe012ee5545b9bf468">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support.test-rules-0.5_ee6b2c3ca064af85e97f23a15e1f727248a6d034.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\manan\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_540bbdf920245069a3a4e873ee7c1c31edf5aab4\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_9d344991a17cb98e5ff876e1833ccb7711e93385.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.1_e88d07bd5c0c8e91e3052e584211aa771af917f6\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_9223d3d5ac686ee8981b268afc45a23ce2f25d7d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support.test.espresso\espresso-core\2.2.2\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="d115b0e9e1501135fe91254ba884fcbd83d374c0">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support.test.espresso-espresso-core-2.2.2_8c16829cda77944d8da3e4d649408e98be5be883.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-iid-10.0.1_48f8840b60602a0c432f70ae94f20cb9423c79c4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_bd38c5129abcc2aa45eb282436bb6e60c69b4877.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\gson-2.2.4_313aff129984a0a45e086871ec03bfcc02e7284e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_1aa96f3aaa99ce582e26020bd9287cafdb02f554.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\okio-1.13.0_7c06c79b8a2ac6325615f941ae6d832bc0a3041e.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
-        <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_725058f18d5315caf846355c5ba835a4650d369b\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_804995416b2dfb21307b36c653ce366cd298fc85.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_833fb5fdf4e1898dc586e8e0821bf5af8329f476.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_b88861f6665d48dc1ce19222ea1b627ac289e174.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support.test\exposed-instrumentation-api-publish\0.5\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="905f3e63973d47fedf2d945fa31d8c0f0c98816e">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support.test-exposed-instrumentation-api-publish-0.5_158c82211729ec2a950e71267458920bf18c8f47.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.8.0\5a11f020cce2d11eb71ba916700600e18c4547e7\okhttp-3.8.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="5a11f020cce2d11eb71ba916700600e18c4547e7">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\okhttp-3.8.0_ba4e385d1ee960507daf701bb5fcdda3b9571edb.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
-        <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.1_62bb7624af7c047e9aefffdae24c964a30881992\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\junit-4.12_daad3e0f8d908806bedb9e9358d94e492e02d74f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.0.1_1dbad6e5f342c5a3366af5e4e560247ac237be74.jar" />
     </item>
     <item
         is-multidex="true"
@@ -300,12 +93,39 @@
     </item>
     <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\jars\classes.jar"
+        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-common-10.0.1_68912c200dc6ff5b4b1f1cc2564236fd153dcc34.jar" />
+        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\hamcrest-core-1.3_8c4f3d0ed01507752a91ad74a0d8203ad717f2b1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support.test.espresso\espresso-idling-resource\2.2.2\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a890ee8445927649d9ed50f625a315d8758688be">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support.test.espresso-espresso-idling-resource-2.2.2_ee3af8141337b6d55c6d6bb59abdefa5745ee8a0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.3.1_c9e601c0220423d445262d9c516bc715a2ab658e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\11.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="aba37a3eec04e174dc59f00cf4bd7992061d847a">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-iid-11.0.0_28cc9c8f0073839d297965c93d2b6f493f67ea2a.jar" />
     </item>
     <item
         is-multidex="true"
@@ -318,30 +138,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.0.1_6769821ed7592aa31b5785c5432ebe820a55d0b9.jar" />
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.3.1_5fc723c95b307ab4a491eb223502846c9af78c3a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\jars\classes.jar"
+        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\com.squareup\javawriter\2.1.1\67ff45d9ae02e583d0f9b3432a5ebbe05c30c966\javawriter-2.1.1.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.0.1_060e24cd15b60615375b9406f38c50e1953b1924.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-10.0.1_a2876204cbc7f133d539dac9d6ae01fed7c8cf1f.jar" />
+        sha1="67ff45d9ae02e583d0f9b3432a5ebbe05c30c966">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\javawriter-2.1.1_4f83cf780bddd0fdd17606c2910697029dbf4ceb.jar" />
     </item>
     <item
         is-multidex="true"
@@ -353,24 +164,6 @@
         <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.0.1_1df6c7dd06eba77006af59360354bd67f741eb4c\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_9ef6debe567a6d786d7ab25241488661838589af.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-10.0.1_fa3aa29db4654a3bfd5fc558e994ebaa05d96aac.jar" />
-    </item>
-    <item
         is-multidex="true"
         jar="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
         jumboMode="true"
@@ -378,6 +171,51 @@
         revision="25.0.1"
         sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
         <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_e2023a5847130aa9fe26df91244d72a67defc7b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\transition\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.3.1_2c9c0faa2a534fc4377f310b62b882ea1ab69f2a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\11.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8723f4a84a0293f5e9ee76193e6bfec47137f048">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-messaging-11.0.0_018f7ba4999e0a6ef2648c7addb1d6eadc0cc977.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support.test\rules\0.5\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="7e11799d8a26bfa5d48acafe012ee5545b9bf468">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support.test-rules-0.5_ee6b2c3ca064af85e97f23a15e1f727248a6d034.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.3.1_01b77cabc35db9dcbb74324b41b75fd8fcce9c95.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.3.1_a6244b30d9e89f3a1d322c5679d1b62615526de7.jar" />
     </item>
     <item
         is-multidex="true"
@@ -389,13 +227,31 @@
         <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.1_b7cb6eab3f76b95e62892a47ee3d9aa448530c90\classes.dex" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\manan\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_540bbdf920245069a3a4e873ee7c1c31edf5aab4\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\11.0.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_5dec47cb79354eb4cdc2d6aff5f4501df3f3b414.jar" />
+        sha1="0e39662b49ef66950c0941aa5fd4c49346a7c341">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-common-11.0.0_fefbe58f3e5e04a3348dc971cba91bac9c159b18.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.1_e88d07bd5c0c8e91e3052e584211aa771af917f6\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -408,39 +264,39 @@
     </item>
     <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\jars\classes.jar"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-10.0.1_8463e0ee28791a61b6d64cba337e96b2fb1cc266.jar" />
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.3.1_b544259edbae5a2687856f0714458b72887f0956.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\11.0.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_9dbb7b5b445eedaa4b7585efad84ae8e284db374.jar" />
+        sha1="d410043f93e71bb0179ba86b85726dd080f14b79">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-11.0.0_c6b2b6f35acda62188eb85530d9ff131df43fbf6.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support.test.espresso\espresso-core\2.2.2\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_4d543af2f4eb7641583d3f17ca194154d5ce1da8.jar" />
+        sha1="d115b0e9e1501135fe91254ba884fcbd83d374c0">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support.test.espresso-espresso-core-2.2.2_8c16829cda77944d8da3e4d649408e98be5be883.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\11.0.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_a7bc3a0ed37d71ab84b8cf89acfebcfd4e54cb15.jar" />
+        sha1="ef65e4780d67d06abddd6e2d15dd4e0519ad8d8a">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-11.0.0_09258bef1b6a4ecb94130eaf4de605b25068cedc.jar" />
     </item>
     <item
         is-multidex="false"
@@ -453,12 +309,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.3.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_0c97a3b343bff325f3fdf0aa9660cf95280e6958.jar" />
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.3.1_f9b15eac8bf3a3fb14a188b3b36000e30746762c.jar" />
     </item>
     <item
         is-multidex="true"
@@ -471,6 +327,42 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\gson-2.2.4_313aff129984a0a45e086871ec03bfcc02e7284e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\okio-1.13.0_7c06c79b8a2ac6325615f941ae6d832bc0a3041e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\manan\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_a229222070995cbbce90a46ed4629707b646d15b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.3.1_6f194cc13b302604d15715f27f62e529d49bc15b.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
         jumboMode="false"
         optimize="true"
@@ -479,13 +371,13 @@
         <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\javax.inject-1_bdb61f3b5ac70b92d1040663c93a33fc54bc5106.jar" />
     </item>
     <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-impl-10.0.1_2299904e362345189cab15e0c211dfbe6f2a9451.jar" />
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_725058f18d5315caf846355c5ba835a4650d369b\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -506,6 +398,33 @@
         <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\jsr305-2.0.1_67c9838b965c7037d25b9628eb0508241af82467.jar" />
     </item>
     <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\design\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.3.1_a1ec11fb7b360efd7554dfbecfc7b87bd1892382.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support.test\exposed-instrumentation-api-publish\0.5\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="905f3e63973d47fedf2d945fa31d8c0f0c98816e">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support.test-exposed-instrumentation-api-publish-0.5_158c82211729ec2a950e71267458920bf18c8f47.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.3.1_32285ab02fbe738926289958bfa3815fe4ba48fc.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
         jumboMode="true"
@@ -513,6 +432,15 @@
         revision="25.0.1"
         sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
         <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.1_89d140a65b60a2fe5336610ec4d8c6ca61501fb3\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.8.0\5a11f020cce2d11eb71ba916700600e18c4547e7\okhttp-3.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="5a11f020cce2d11eb71ba916700600e18c4547e7">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\okhttp-3.8.0_ba4e385d1ee960507daf701bb5fcdda3b9571edb.jar" />
     </item>
     <item
         is-multidex="true"
@@ -534,12 +462,48 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\manan\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.1"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_540bbdf920245069a3a4e873ee7c1c31edf5aab4.jar" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.3.1_15af2000b7350d0fd2a2d41a32cb774e27744211.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.3.1_2db447a15ed7b38f1f5b1022ae8a67447c3dbd96.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.1_62bb7624af7c047e9aefffdae24c964a30881992\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\manan\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\junit-4.12_daad3e0f8d908806bedb9e9358d94e492e02d74f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\11.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a611d7a00671ec4eb3050a21425fae955a38eb8a">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-impl-11.0.0_d4c9e4e07b401ed9f7789397cbcfbf9b03e608c6.jar" />
     </item>
     <item
         is-multidex="true"
@@ -549,15 +513,6 @@
         revision="25.0.1"
         sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
         <dex dex="C:\Users\manan\AndroidStudioProjects\MoneyPal\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_58289eb48ca70e06fef97453aed7282ce7fc4f56\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="f83b00041ecfba705603fec40363416c7de69719">
-        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_a42dee9d7e8956b3fc38d6b8e79f35dc2fe73c73.jar" />
     </item>
 
 </items>

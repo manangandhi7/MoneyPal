@@ -39,7 +39,7 @@ import static com.MoneyPal.Common.Utility.UNIQUE_ID;
 import static com.MoneyPal.Common.Utility.getToken;
 
 public class MainActivity extends AppCompatActivity
-implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -99,13 +99,14 @@ implements NavigationView.OnNavigationItemSelectedListener {
 //        }
 
         //unique ID
-
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String uniqueID = mPreferences.getString(UNIQUE_ID, "");
 
         if (uniqueID == "") {
             uniqueID = generateUniqueID();
-            mPreferences.edit().putString(UNIQUE_ID, uniqueID);
+            SharedPreferences.Editor editor = mPreferences.edit();
+            editor.putString(UNIQUE_ID, uniqueID);
+            editor.commit();
         }
 
         makeToast(uniqueID);
@@ -132,20 +133,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     private View.OnClickListener onClick() {
         return new View.OnClickListener() {
@@ -184,8 +172,12 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+        } else if (id == R.id.nav_dostaro) {
+            Intent intent = new Intent(getApplicationContext(), DostarListActivity.class);
+            //EditText editText = (EditText) findViewById(R.id.editText);
+            //String message = editText.getText().toString();
+            //intent.putExtra(EXTRA_MESSAGE, message);
+            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -200,6 +192,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<MainActivity.SimpleItemRecyclerViewAdapter.ViewHolder> {
 
