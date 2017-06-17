@@ -15,18 +15,17 @@ public class IDGenerator {
     public static String generateUniqueID() {
         String uniqueID = "";
         Random r = new Random();
-        //while (true){
-        for (int i = 0; i < 3; ++i) {
-            int index = r.nextInt(arr.length);
-            uniqueID += arr[index].toUpperCase();
-            uniqueID += "_";
-        }
-//            if (not allotted){
-//                break;
-//            } else {
-//                continue;
-//            }
-        //}
+
+        int index = r.nextInt(arr.length);
+        uniqueID += arr[index].toUpperCase();
+        uniqueID += "_";
+
+        index = r.nextInt(arr.length);
+        uniqueID += arr[index].toUpperCase();
+        uniqueID += "_";
+
+        index = r.nextInt(arr.length);
+        uniqueID += arr[index].toUpperCase();
 
         return uniqueID;
     }

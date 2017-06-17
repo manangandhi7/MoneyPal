@@ -1,16 +1,16 @@
 package com.MoneyPal.Activity;
 
-import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,12 +22,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.MoneyPal.Common.Utility;
 import com.MoneyPal.ItemDetailFragment;
 import com.MoneyPal.R;
 import com.MoneyPal.dummy.DummyContent;
@@ -39,7 +37,6 @@ import static com.MoneyPal.Common.IDGenerator.generateUniqueID;
 import static com.MoneyPal.Common.Utility.GLOBAL_CATEGORY;
 import static com.MoneyPal.Common.Utility.UNIQUE_ID;
 import static com.MoneyPal.Common.Utility.USERNAME;
-import static com.MoneyPal.Common.Utility.getToken;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -59,20 +56,20 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
-        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.request_money);
         button.setOnClickListener(onClick());
-        button = (FloatingActionButton) findViewById(R.id.fab2);
+        button = (FloatingActionButton) findViewById(R.id.send_money);
         button.setOnClickListener(onClick());
-        button = (FloatingActionButton) findViewById(R.id.fab3);
+        button = (FloatingActionButton) findViewById(R.id.add_transaction);
         button.setOnClickListener(onClick());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -112,9 +109,7 @@ public class MainActivity extends AppCompatActivity
             editor.commit();
         }
 
-        makeToast(uniqueID);
-
-
+        //makeToast(uniqueID);
 
         View v = navigationView.getHeaderView(0);
         TextView textView = (TextView) v.findViewById(R.id.nav_unique_id);
@@ -124,10 +119,7 @@ public class MainActivity extends AppCompatActivity
         String userName = mPreferences.getString(USERNAME, "");
 
         if (userName == "") {
-            userName = getUserName();
-            SharedPreferences.Editor editor = mPreferences.edit();
-            editor.putString(USERNAME, userName);
-            editor.commit();
+            userName = "User";
         }
 
         TextView textView2 = (TextView) v.findViewById(R.id.nav_user_name);
@@ -135,34 +127,48 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
 
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog);
-        dialog.setTitle("Dialog box");
+        String userName = mPreferences.getString(USERNAME, "");
 
-        Button button = (Button) dialog.findViewById(R.id.Button01);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        if (userName == "") {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Enter your name");
 
-        dialog.show();
-    }
+// Set up the input
+            final EditText input = new EditText(this);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            builder.setView(input);
 
-    private String getUserName(){
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-//
-//        builder.setMessage("message")
-//                .setTitle("title");
-//
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
-        return "user";
+// Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String userName = input.getText().toString();
+                    SharedPreferences.Editor editor = mPreferences.edit();
+                    editor.putString(USERNAME, userName);
+                    editor.commit();
+
+
+
+                    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                    View v = navigationView.getHeaderView(0);
+                    TextView textView2 = (TextView) v.findViewById(R.id.nav_user_name);
+                    textView2.setText(userName);
+
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
+        }
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -187,36 +193,27 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     private View.OnClickListener onClick() {
         return new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 //mLayout.addView(createNewTextView(mEditText.getText().toString()));
-                if (v == findViewById(R.id.fab)) {
+                if (v == findViewById(R.id.request_money)) {
                     Intent intent = new Intent(getApplicationContext(), SendMoneyActivity.class);
-                    //EditText editText = (EditText) findViewById(R.id.editText);
-                    //String message = editText.getText().toString();
                     //intent.putExtra(EXTRA_MESSAGE, message);
                     startActivity(intent);
-                } else if (v == findViewById(R.id.fab2)) {
+                } else if (v == findViewById(R.id.send_money)) {
                     Intent intent = new Intent(getApplicationContext(), SendMoneyActivity.class);
-                    //EditText editText = (EditText) findViewById(R.id.editText);
-                    //String message = editText.getText().toString();
                     //intent.putExtra(EXTRA_MESSAGE, message);
                     startActivity(intent);
-                } else if (v == findViewById(R.id.fab3)) {
+                } else if (v == findViewById(R.id.add_transaction)) {
                     Intent intent = new Intent(getApplicationContext(), ShareMoneyActivity.class);
-                    //EditText editText = (EditText) findViewById(R.id.editText);
-                    //String message = editText.getText().toString();
-                    //intent.putExtra(EXTRA_MESSAGE, message);
                     startActivity(intent);
                 }
             }
         };
     }
-
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -227,14 +224,10 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-            //EditText editText = (EditText) findViewById(R.id.editText);
-            //String message = editText.getText().toString();
             //intent.putExtra(EXTRA_MESSAGE, message);
             startActivity(intent);
         } else if (id == R.id.nav_dostaro) {
             Intent intent = new Intent(getApplicationContext(), DostarListActivity.class);
-            //EditText editText = (EditText) findViewById(R.id.editText);
-            //String message = editText.getText().toString();
             //intent.putExtra(EXTRA_MESSAGE, message);
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
@@ -324,6 +317,4 @@ public class MainActivity extends AppCompatActivity
     private void makeToast(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
-
-
 }

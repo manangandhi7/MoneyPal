@@ -42,8 +42,10 @@ public class ShareMoneyActivity extends AppCompatActivity {
         addChildLayout(findViewById(R.id.participant_list));
 
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d("token", refreshedToken);
-        makeToast( refreshedToken);
+        if(refreshedToken != null) {
+            Log.d("token", refreshedToken);
+            makeToast(refreshedToken);
+        }
     }
 
     private View.OnClickListener onClick() {

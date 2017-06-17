@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,11 +16,41 @@
     tools:showIn="@layout/activity_profile">
 
     <TextView
+        android:text="Your unique ID:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        android:id="@+id/uniue_id_textbox" />
+
+    <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="45sp"
+        android:textSize="26sp"
         android:id="@+id/uniue_id_profile" />
+
+    <TextView
+        android:text="Barcode:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        android:layout_marginTop="140sp"
+        android:id="@+id/uniue_barcode_textbox" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/qr2"
+        android:layout_below="@+id/uniue_barcode_textbox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25sp"
+        android:id="@+id/barcode" />
+
 </RelativeLayout>
