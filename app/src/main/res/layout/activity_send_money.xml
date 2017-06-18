@@ -29,107 +29,68 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/sender_layout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-
-                <TextView
-                    android:text="Sender"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView_sender"
-                    android:textSize="25sp"
-                    android:layout_weight="0.3" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
                     android:id="@+id/sender"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_sender"
                     android:inputType="text|textAutoComplete"
                     android:maxLines="1"
-                    android:textSize="25sp"
-                    android:singleLine="true"
-                    android:layout_weight="0.7"
-                    />
+                    android:singleLine="true" />
 
-            </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:id="@+id/receiver_layout1"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-            <TextView
-                android:text="Receiver"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView_receiver"
-                android:textSize="25sp"
-                android:layout_weight="0.3" />
+                android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
                     android:id="@+id/receiver"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_receiver"
                     android:imeActionId="@+id/login"
-                    android:imeActionLabel="Receiver"
+                    android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="text|textAutoComplete"
                     android:maxLines="1"
-                    android:textSize="25sp"
-                    android:layout_weight="0.7"
-
                     android:singleLine="true" />
 
 
 
-            </LinearLayout>
-            <!--android.support.design.widget.TextInputLayout
+            </android.support.design.widget.TextInputLayout>
+            <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<Spinner-->
+                    <!--android:id="@+id/spinner"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="@string/prompt_receiver"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:background="@android:drawable/btn_dropdown"-->
+                    <!--android:spinnerMode="dropdown" />-->
+            <!--</android.support.design.widget.TextInputLayout>-->
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_receiver"
-                    android:maxLines="1"
-                    android:background="@android:drawable/btn_dropdown"
-                    android:spinnerMode="dropdown" />
-            </android.support.design.widget.TextInputLayout-->
-
-            <LinearLayout
-                android:id="@+id/amount_layout1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-                <TextView
-                    android:text="Amount"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView_amount"
-                    android:textSize="25sp"
-                    android:layout_weight="0.3" />
             <EditText
                 android:id="@+id/amount"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeActionLabel="@string/action_amount"
                 android:imeOptions="actionUnspecified"
                 android:hint="@string/prompt_amount"
                 android:inputType="numberDecimal"
-                android:layout_weight="0.7"
-                android:textSize="25sp"
                 android:ems="10" />
-            </LinearLayout>
+
+            </android.support.design.widget.TextInputLayout>
 
             <CheckBox
                 android:text="Transfer Now"
