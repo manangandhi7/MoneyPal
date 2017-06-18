@@ -52,17 +52,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.ItemListActivity"
-            android:label="@string/title_item_list"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Activity.ItemDetailActivity"
+            android:name=".Activity.TransactionDetailActivity"
             android:label="@string/title_item_detail"
-            android:parentActivityName=".Activity.ItemListActivity"
+            android:parentActivityName=".Activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.MoneyPal.Activity.ItemListActivity" />
+                android:value="com.MoneyPal.Activity.MainActivity" />
         </activity>
         <activity android:name=".Activity.SendMoneyActivity" />
         <activity android:name=".Activity.ShareMoneyActivity" />
