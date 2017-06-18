@@ -1,6 +1,7 @@
 package com.MoneyPal.dummy;
 
 import com.MoneyPal.Inventory.Storage;
+import com.MoneyPal.Inventory.Transaction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,19 +31,18 @@ public class TransactionContent {
 
     private TransactionContent() {
 
-        HashMap userMap = Storage.getInstance().getUsers();
-
-        int i = 1;
+        HashMap userMap = Storage.getInstance().getUserMap();
+        List<Transaction> transactionList = Storage.getInstance().getTransactionList();
 
         for (Object userObj : userMap.keySet()) {
-            addItem(createTransactionItem(userObj.toString()));
+            addItem(createTransactionItem(userObj.toString(), transactionList));
         }
     }
 
     public static TransactionContent getInstance(){
-        if(instance == null){
+        //if(instance == null){
             instance = new TransactionContent();
-        }
+        //}
 
         return instance;
     }
@@ -52,7 +52,8 @@ public class TransactionContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private  TransationItem createTransactionItem(String friend) {
+    private  TransationItem createTransactionItem(String friend, List<Transaction> transactionList) {
+
 
         Random r = new Random();
         int number = r.nextInt();
@@ -62,16 +63,27 @@ public class TransactionContent {
             sign = "-";
         }
 
-        return new TransationItem(String.valueOf(friend), sign + new Random().nextInt(500), makeDetails(friend));
+        return new TransationItem(String.valueOf(friend), sign + new Random().nextInt(500), makeDetails(friend, transactionList));
     }
 
-    private  String makeDetails(String friend) {
+    private  String makeDetails(String friend, List<Transaction> transactionList) {
+
+
         StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(friend);
-        Random r = new Random();
-        for (int i = 0; i < r.nextInt(7); i++) {
-            builder.append("\nMore details information here.");
+        builder.append("All transactions for: ").append(friend);
+
+
+//        Random r = new Random();
+//        for (int i = 0; i < r.nextInt(7); i++) {
+//            builder.append("\nMore details information here.");
+//        }
+
+        for (Transaction trans : transactionList){
+            if(trans.participants.contains(friend)){
+                builder.append("\nMore details information here.");
+            }
         }
+
         return builder.toString();
     }
 

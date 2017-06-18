@@ -31,6 +31,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.R;
 import com.MoneyPal.dummy.TransactionContent;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Storage.getInstance();
         setContentView(R.layout.activity_settings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -99,10 +102,10 @@ public class MainActivity extends AppCompatActivity
         }
 
         FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_SUBSCRIBE);
-        if (getToken() != null) {
-            makeToast(getToken());
-            Log.d("token", getToken());
-        }
+//        if (getToken() != null) {
+//            makeToast(getToken());
+//            Log.d("token", getToken());
+//        }
 
         //unique ID
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);

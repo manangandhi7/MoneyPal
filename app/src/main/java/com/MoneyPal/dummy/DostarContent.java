@@ -29,7 +29,7 @@ public class DostarContent {
 
     public DostarContent() {
 
-        HashMap userMap = Storage.getInstance().getUsers();
+        HashMap userMap = Storage.getInstance().getUserMap();
 
         int i = 1;
         for (Object userObj : userMap.keySet()) {
