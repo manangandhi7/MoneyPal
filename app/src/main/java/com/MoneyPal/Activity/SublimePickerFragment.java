@@ -1,40 +1,24 @@
 package com.MoneyPal.Activity;
-/*
- * Copyright 2015 Vikram Kakkar
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
-        import android.os.Bundle;
-        import android.support.annotation.Nullable;
-        import android.support.v4.app.DialogFragment;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Toast;
+import com.MoneyPal.R;
+import com.appeaser.sublimepickerlibrary.SublimePicker;
+import com.appeaser.sublimepickerlibrary.datepicker.SelectedDate;
+import com.appeaser.sublimepickerlibrary.helpers.SublimeListenerAdapter;
+import com.appeaser.sublimepickerlibrary.helpers.SublimeOptions;
+import com.appeaser.sublimepickerlibrary.recurrencepicker.SublimeRecurrencePicker;
 
-        import com.MoneyPal.R;
-        import com.appeaser.sublimepickerlibrary.SublimePicker;
-        import com.appeaser.sublimepickerlibrary.datepicker.SelectedDate;
-        import com.appeaser.sublimepickerlibrary.helpers.SublimeListenerAdapter;
-        import com.appeaser.sublimepickerlibrary.helpers.SublimeOptions;
-        import com.appeaser.sublimepickerlibrary.recurrencepicker.SublimeRecurrencePicker;
-
-        import java.text.DateFormat;
-        import java.util.Locale;
-        import java.util.TimeZone;
+import java.text.DateFormat;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class SublimePickerFragment extends DialogFragment {
     // Date & Time formatter used for formatting
@@ -51,9 +35,7 @@ public class SublimePickerFragment extends DialogFragment {
         @Override
         public void onCancelled() {
 
-            if (mCallback!= null) {
-
-
+            if (mCallback != null) {
                 mCallback.onCancelled();
             }
 
@@ -73,7 +55,6 @@ public class SublimePickerFragment extends DialogFragment {
                 mCallback.onDateTimeRecurrenceSet(selectedDate,
                         hourOfDay, minute, recurrenceOption, recurrenceRule);
             }
-
 
 
             // Should actually be called by activity inside `Callback.onCancelled()`

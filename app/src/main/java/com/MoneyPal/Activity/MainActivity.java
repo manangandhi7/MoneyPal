@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_SUBSCRIBE);
-        if(getToken() != null) {
+        if (getToken() != null) {
             makeToast(getToken());
             Log.d("token", getToken());
         }
@@ -154,8 +154,6 @@ public class MainActivity extends AppCompatActivity
                     SharedPreferences.Editor editor = mPreferences.edit();
                     editor.putString(USERNAME, userName);
                     editor.commit();
-
-
 
                     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
                     View v = navigationView.getHeaderView(0);
@@ -235,7 +233,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(), DostarListActivity.class);
             //intent.putExtra(EXTRA_MESSAGE, message);
             startActivity(intent);
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_bank_details) {
 
         } else if (id == R.id.nav_manage) {
 

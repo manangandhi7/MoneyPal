@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -39,11 +40,11 @@ public class SendMoneyActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, Storage.getInstance().getUsersArray());
         //TODO drop down menu will be better, slect karo etle list popup thay, wither select existing one or create new one
-        Spinner textView = (Spinner)
-                findViewById(R.id.spinner);
+//        Spinner textView = (Spinner)
+//                findViewById(R.id.spinner);
         AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView)
                 findViewById(R.id.receiver);
-        textView.setAdapter(adapter);
+//        textView.setAdapter(adapter);
         autoCompleteTextView.setAdapter(adapter);
 
         final Button button = (Button) findViewById(R.id.transfer_button);
@@ -51,8 +52,7 @@ public class SendMoneyActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("hell", "how r");
                 try {
-                    SublimePickerFragment pickerFrag = new SublimePickerFragment();
-                    pickerFrag.show(getSupportFragmentManager(), "SUBLIME_PICKER");
+
 
                     JSONObject json = new JSONObject();
                     json.put("AccountNumber", "30001512992");
@@ -79,5 +79,13 @@ public class SendMoneyActivity extends AppCompatActivity {
 
     private boolean requestMoney(String from, String to, double amount) {
         return true;
+    }
+
+    public void onTransferNowChanged(View view) {
+        CheckBox transfer_now = (CheckBox) view;
+        if(!transfer_now.isChecked()){
+            SublimePickerFragment pickerFrag = new SublimePickerFragment();
+            pickerFrag.show(getSupportFragmentManager(), "SUBLIME_PICKER");
+        }
     }
 }
