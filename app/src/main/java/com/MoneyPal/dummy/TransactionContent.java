@@ -1,6 +1,5 @@
 package com.MoneyPal.dummy;
 
-import com.MoneyPal.Common.Utility;
 import com.MoneyPal.Inventory.Storage;
 
 import java.util.ArrayList;
@@ -15,45 +14,45 @@ import java.util.Random;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class DummyContent {
+public class TransactionContent {
 
     /**
      * An array of sample (dummy) items.
      */
-    public List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+    public List<TransationItem> ITEMS = new ArrayList<TransationItem>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
+    public Map<String, TransationItem> ITEM_MAP = new HashMap<String, TransationItem>();
 
-    private static DummyContent instance;
+    private static TransactionContent instance;
 
-    private DummyContent() {
+    private TransactionContent() {
 
         HashMap userMap = Storage.getInstance().getUsers();
 
         int i = 1;
 
         for (Object userObj : userMap.keySet()) {
-            addItem(createDummyItem(userObj.toString()));
+            addItem(createTransactionItem(userObj.toString()));
         }
     }
 
-    public static DummyContent getInstance(){
+    public static TransactionContent getInstance(){
         if(instance == null){
-            instance = new DummyContent();
+            instance = new TransactionContent();
         }
 
         return instance;
     }
 
-    private  void addItem(DummyItem item) {
+    private  void addItem(TransationItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
 
-    private  DummyItem createDummyItem(String friend) {
+    private  TransationItem createTransactionItem(String friend) {
 
         Random r = new Random();
         int number = r.nextInt();
@@ -63,7 +62,7 @@ public class DummyContent {
             sign = "-";
         }
 
-        return new DummyItem(String.valueOf(friend), sign + new Random().nextInt(500), makeDetails(friend));
+        return new TransationItem(String.valueOf(friend), sign + new Random().nextInt(500), makeDetails(friend));
     }
 
     private  String makeDetails(String friend) {
@@ -79,12 +78,12 @@ public class DummyContent {
     /**
      * A dummy item representing a piece of content.
      */
-    public  class DummyItem {
+    public  class TransationItem {
         public final String id;
         public final String content;
         public final String details;
 
-        public DummyItem(String id, String content, String details) {
+        public TransationItem(String id, String content, String details) {
             this.id = id;
             this.content = content;
             this.details = details;

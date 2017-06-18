@@ -33,7 +33,7 @@ public class DostarContent {
 
         int i = 1;
         for (Object userObj : userMap.keySet()) {
-            addItem(createDummyItem(i++, userObj.toString()));
+            addItem(createDostarItem(i++, userObj.toString()));
         }
     }
 
@@ -43,7 +43,7 @@ public class DostarContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private DostarItem createDummyItem(int position, String name) {
+    private DostarItem createDostarItem(int position, String name) {
         return new DostarItem(String.valueOf(position), name, makeDetails(position));
     }
 

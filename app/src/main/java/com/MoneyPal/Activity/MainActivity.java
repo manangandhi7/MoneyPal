@@ -30,7 +30,7 @@ import android.widget.Toast;
 
 import com.MoneyPal.ItemDetailFragment;
 import com.MoneyPal.R;
-import com.MoneyPal.dummy.DummyContent;
+import com.MoneyPal.dummy.TransactionContent;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.List;
@@ -174,8 +174,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        DummyContent dummyContent = DummyContent.getInstance();
-        recyclerView.setAdapter(new MainActivity.SimpleItemRecyclerViewAdapter(dummyContent.ITEMS));
+        TransactionContent transactionContent = TransactionContent.getInstance();
+        recyclerView.setAdapter(new MainActivity.SimpleItemRecyclerViewAdapter(transactionContent.ITEMS));
     }
 
     @Override
@@ -253,9 +253,9 @@ public class MainActivity extends AppCompatActivity
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<MainActivity.SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<TransactionContent.TransationItem> mValues;
 
-        public SimpleItemRecyclerViewAdapter(List<DummyContent.DummyItem> items) {
+        public SimpleItemRecyclerViewAdapter(List<TransactionContent.TransationItem> items) {
             mValues = items;
         }
 
@@ -303,7 +303,7 @@ public class MainActivity extends AppCompatActivity
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public DummyContent.DummyItem mItem;
+            public TransactionContent.TransationItem mItem;
 
             public ViewHolder(View view) {
                 super(view);

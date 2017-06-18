@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.MoneyPal.ItemDetailFragment;
 import com.MoneyPal.R;
-import com.MoneyPal.dummy.DummyContent;
+import com.MoneyPal.dummy.TransactionContent;
 
 import java.util.List;
 
@@ -69,16 +69,16 @@ public class ItemListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        DummyContent dummyContent = DummyContent.getInstance();
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(dummyContent.ITEMS));
+        TransactionContent transactionContent = TransactionContent.getInstance();
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(transactionContent.ITEMS));
     }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<TransactionContent.TransationItem> mValues;
 
-        public SimpleItemRecyclerViewAdapter(List<DummyContent.DummyItem> items) {
+        public SimpleItemRecyclerViewAdapter(List<TransactionContent.TransationItem> items) {
             mValues = items;
         }
 
@@ -126,7 +126,7 @@ public class ItemListActivity extends AppCompatActivity {
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public DummyContent.DummyItem mItem;
+            public TransactionContent.TransationItem mItem;
 
             public ViewHolder(View view) {
                 super(view);
