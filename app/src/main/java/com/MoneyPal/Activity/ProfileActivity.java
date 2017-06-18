@@ -47,5 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
         if (userName != "") {
             setTitle(userName);
         }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 }

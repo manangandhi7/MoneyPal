@@ -6,16 +6,29 @@
     android:orientation="horizontal">
 
 
-    <Spinner
+    <!--<Spinner-->
+        <!--android:id="@+id/participant_name1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="left"-->
+        <!--android:layout_weight="0.8"-->
+        <!--android:background="@android:drawable/btn_dropdown"-->
+        <!--android:hint="@string/prompt_receiver"-->
+        <!--android:maxLines="1"-->
+        <!--android:spinnerMode="dropdown" />-->
+
+    <AutoCompleteTextView
         android:id="@+id/participant_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:layout_weight="0.8"
-        android:background="@android:drawable/btn_dropdown"
         android:hint="@string/prompt_receiver"
+        android:imeActionId="@+id/login"
+        android:imeActionLabel="participant"
+        android:inputType="text|textAutoComplete"
         android:maxLines="1"
-        android:spinnerMode="dropdown" />
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/participant_contribution"

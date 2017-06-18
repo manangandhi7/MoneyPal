@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -42,11 +43,11 @@ public class ShareMoneyActivity extends AppCompatActivity {
         addChildLayout(findViewById(R.id.payer_list));
         addChildLayout(findViewById(R.id.participant_list));
 
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        if(refreshedToken != null) {
-            Log.d("token", refreshedToken);
-            makeToast(refreshedToken);
-        }
+//        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+//        if(refreshedToken != null) {
+//            Log.d("token", refreshedToken);
+//            makeToast(refreshedToken);
+//        }
     }
 
     private View.OnClickListener onClick() {
@@ -76,8 +77,8 @@ public class ShareMoneyActivity extends AppCompatActivity {
         //TODO validation of the fields
         for (int i = 0; i < payers.getChildCount(); i++) {
 
-            Spinner spinner = (Spinner) payers.getChildAt(i).findViewById(R.id.participant_name);
-            String participant = spinner.getSelectedItem().toString();
+            AutoCompleteTextView spinner = (AutoCompleteTextView) payers.getChildAt(i).findViewById(R.id.participant_name);
+            String participant = spinner.getText().toString();
             EditText editText = (EditText) payers.getChildAt(i).findViewById(R.id.participant_contribution);
             Double amount = Double.parseDouble(editText.getText().toString());
             transaction.addPayer(participant, amount);
@@ -85,8 +86,8 @@ public class ShareMoneyActivity extends AppCompatActivity {
 
         for (int i = 0; i < participants.getChildCount(); i++) {
             //TODO get amount only if checked
-            Spinner spinner = (Spinner) participants.getChildAt(i).findViewById(R.id.participant_name);
-            String participant = spinner.getSelectedItem().toString();
+            AutoCompleteTextView spinner = (AutoCompleteTextView) participants.getChildAt(i).findViewById(R.id.participant_name);
+            String participant = spinner.getText().toString();
 
             CheckBox evenSplit = (CheckBox) findViewById(R.id.even_split);
             if (!evenSplit.isChecked()) {
@@ -115,7 +116,7 @@ public class ShareMoneyActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, Storage.getInstance().getUsersArray());
-        Spinner participants = (Spinner) view.findViewById(R.id.participant_name);
+        AutoCompleteTextView participants = (AutoCompleteTextView) view.findViewById(R.id.participant_name);
         participants.setAdapter(adapter);
 
         CheckBox evenSplit = (CheckBox) findViewById(R.id.even_split);

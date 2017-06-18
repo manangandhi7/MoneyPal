@@ -30,7 +30,8 @@
     <string name="title_item_detail">Item Detail</string>
     <string name="title_friend_list">Friends</string>
     <string name="title_friend_detail">Friend Detail</string>
-    <string name="title_dostar_list">Dostaro</string>
-    <string name="title_dostar_detail">Dostar Detail</string>
+    <string name="title_dostar_list">Friends</string>
+    <string name="title_dostar_detail">Friend Detail</string>
     <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_bank_details">BankDetailsActivity</string>
 </resources>

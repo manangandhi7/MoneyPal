@@ -51,6 +51,7 @@ public class Transaction {
     }
 
     public void addPayer(String payer, double amount){
+        //TODO: jo user store ma na hoy to add kar navo
         payers.put(payer, amount);
     }
 

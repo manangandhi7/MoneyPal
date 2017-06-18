@@ -234,7 +234,9 @@ public class MainActivity extends AppCompatActivity
             //intent.putExtra(EXTRA_MESSAGE, message);
             startActivity(intent);
         } else if (id == R.id.nav_bank_details) {
-
+            Intent intent = new Intent(getApplicationContext(), BankDetailsActivity.class);
+            //intent.putExtra(EXTRA_MESSAGE, message);
+            startActivity(intent);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
