@@ -1,18 +1,23 @@
 package com.MoneyPal.Activity;
 
+import android.app.DialogFragment;
+import android.renderscript.Sampler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.MoneyPal.Common.Utility;
 import com.MoneyPal.Inventory.Notification;
 import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.R;
+
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -46,6 +51,8 @@ public class SendMoneyActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("hell", "how r");
                 try {
+                    SublimePickerFragment pickerFrag = new SublimePickerFragment();
+                    pickerFrag.show(getSupportFragmentManager(), "SUBLIME_PICKER");
 
                     JSONObject json = new JSONObject();
                     json.put("AccountNumber", "30001512992");
@@ -54,7 +61,6 @@ public class SendMoneyActivity extends AppCompatActivity {
                     Log.d("tag", s);
 
                     Notification notification = new Notification();
-
 
                     String s2 = new com.MoneyPal.ServerConnection().execute(Utility.FCM_URL, notification.getMyJSON().toString(), SendToFCM).get();
 
@@ -66,7 +72,7 @@ public class SendMoneyActivity extends AppCompatActivity {
         });
     }
 
-    private class TransferNEFT{
+    private class TransferNEFT {
         public String REMTACCTNO;
         public String REMNAME;
         public String MOBNUMBER;
@@ -77,7 +83,7 @@ public class SendMoneyActivity extends AppCompatActivity {
         public String TXNAMT;
     }
 
-    private class TransferRTGS{
+    private class TransferRTGS {
         public String REMTACCTNO;
         public String REMNAME;
         public String MOBNUMBER;
@@ -87,6 +93,7 @@ public class SendMoneyActivity extends AppCompatActivity {
         public String SNDIFSC;
         public String TXNAMT;
     }
+
     private boolean sendMoney(String from, String to, double amount) {
         Gson gson = new Gson();
         return true;

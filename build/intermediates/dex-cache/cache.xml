@@ -309,6 +309,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.appeaser.sublimepickerlibrary\sublimepickerlibrary\2.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="cd5906a1fcd39cd7e1f6d42f230652a5b66a4777">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.appeaser.sublimepickerlibrary-sublimepickerlibrary-2.1.1_3b03c6d51a99c55b01f4dd2965ce0661df2dc187.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.3.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -441,6 +450,15 @@
         revision="25.0.1"
         sha1="5a11f020cce2d11eb71ba916700600e18c4547e7">
         <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\okhttp-3.8.0_ba4e385d1ee960507daf701bb5fcdda3b9571edb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\23.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6aab724703a978c2650239dee0ca67947f305941">
+        <dex dex="F:\Android\MoneyPal\MoneyPal\app\build\intermediates\pre-dexed\debug\com.android.support-gridlayout-v7-23.2.1_66c586e257cec1f0d991669a5e2f319a44042f66.jar" />
     </item>
     <item
         is-multidex="true"
