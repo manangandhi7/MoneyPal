@@ -1,9 +1,5 @@
 package com.MoneyPal.Common;
 
-import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
-
 import com.google.firebase.iid.FirebaseInstanceId;
 
 /**
@@ -35,13 +31,15 @@ public class Utility {
     public static final String SendToSBI = "SendToSBI";
     public static final String FCM_URL = "https://fcm.googleapis.com/fcm/send";
     public static final String AUTHORIZATION_STRING = "Authorization";
-    public static final String AUTHORIZATION_KEY = "key=AAAAbije9rk:APA91bHGo5e_N8WZuiriic-enefLqXDZkd2448wi7ttBOUGYZucaosm672SnsTOlm8Hme0XJnBnii8O6dmEbJnOvPudztW5mHrEWM1wqzwoNQhM_-Y3jAaObYC_2gPmntUi7bXsHJrl7";
+    public static final String AUTHORIZATION_KEY = "key=AAAAbije9rk:APA91bHbBoN50IyYtFa6OOwicb7sSlwl97MvgRMz5_dEdyR4HapNcJzYM3fu5EjDIKHEEFM-e5DU1u3-fOS7XxCZAquMIAZ7Tqe0vVpCIImKtIwaZA1TjLA8wmJlQUIMT-oGU5CJv-B0";
     public static final String SBI_API_KEY_STRING = "apikey";
     public static final String SBI_API_KEY = "VP81nkyVLqrNgrf";
 
-    public static final String GLOBAL_CATEGORY = "global";
+    public static final String GLOBAL_SUBSCRIBE = "global";
     public static final String UNIQUE_ID = "unique_id";
     public static final String USERNAME = "user_name";
+
+    public static final String GLOBAL_SEND = "/topics/" + GLOBAL_SUBSCRIBE;
 
 
     public static String getToken() {

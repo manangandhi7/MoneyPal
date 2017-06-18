@@ -62,7 +62,7 @@ public class SendMoneyActivity extends AppCompatActivity {
 
                     Notification notification = new Notification();
 
-                    String s2 = new com.MoneyPal.ServerConnection().execute(Utility.FCM_URL, notification.getMyJSON().toString(), SendToFCM).get();
+                    String s2 = new com.MoneyPal.ServerConnection().execute(Utility.FCM_URL, notification.getMyJSON2().toString(), SendToFCM).get();
 
                     Log.d("tag", s2);
                 } catch (Exception e) {
@@ -70,28 +70,6 @@ public class SendMoneyActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private class TransferNEFT {
-        public String REMTACCTNO;
-        public String REMNAME;
-        public String MOBNUMBER;
-        public String BENFACCTNO;
-        public String BENFNAME;
-        public String RECBNKIFSC;
-        public String SNDIFSC;
-        public String TXNAMT;
-    }
-
-    private class TransferRTGS {
-        public String REMTACCTNO;
-        public String REMNAME;
-        public String MOBNUMBER;
-        public String BENFACCTNO;
-        public String BENFNAME;
-        public String RECBNKIFSC;
-        public String SNDIFSC;
-        public String TXNAMT;
     }
 
     private boolean sendMoney(String from, String to, double amount) {

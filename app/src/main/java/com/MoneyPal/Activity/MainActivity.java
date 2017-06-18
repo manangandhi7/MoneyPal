@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,16 +23,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.ItemDetailFragment;
 import com.MoneyPal.R;
 import com.MoneyPal.dummy.DummyContent;
@@ -40,9 +36,10 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import java.util.List;
 
 import static com.MoneyPal.Common.IDGenerator.generateUniqueID;
-import static com.MoneyPal.Common.Utility.GLOBAL_CATEGORY;
+import static com.MoneyPal.Common.Utility.GLOBAL_SUBSCRIBE;
 import static com.MoneyPal.Common.Utility.UNIQUE_ID;
 import static com.MoneyPal.Common.Utility.USERNAME;
+import static com.MoneyPal.Common.Utility.getToken;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -99,10 +96,11 @@ public class MainActivity extends AppCompatActivity
             mTwoPane = true;
         }
 
-        FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_CATEGORY);
-//        if(getToken() != null) {
-//            makeToast(getToken());
-//        }
+        FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_SUBSCRIBE);
+        if(getToken() != null) {
+            makeToast(getToken());
+            Log.d("token", getToken());
+        }
 
         //unique ID
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
