@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:layout_weight="0.8"
-        android:hint="@string/prompt_receiver"
+        android:hint="You"
         android:imeActionId="@+id/login"
         android:imeActionLabel="participant"
         android:inputType="text|textAutoComplete"
