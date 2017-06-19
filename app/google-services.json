@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "473132103353",
+    "firebase_url": "https://moneypal-7049a.firebaseio.com",
+    "project_id": "moneypal-7049a",
+    "storage_bucket": "moneypal-7049a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473132103353:android:0efa5660afc5aa72",
+        "android_client_info": {
+          "package_name": "com.MoneyPal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473132103353-90lmin781ntlipkotb5gu74895t5t31r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.MoneyPal",
+            "certificate_hash": "d46230a67ae185e09d7513b73f63d51ae0440b2a"
+          }
+        },
+        {
+          "client_id": "473132103353-jjtr27bv37la5pshsta38kdcflt05vin.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyD0gPz8x_u3xNg-yT_VgWUbwYtyKXH7c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473132103353-jjtr27bv37la5pshsta38kdcflt05vin.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
