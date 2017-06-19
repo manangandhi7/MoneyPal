@@ -4,6 +4,8 @@ package com.MoneyPal.Inventory;
  * Created by manan on 6/11/2017.
  */
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -31,8 +33,12 @@ public class Storage {
         //add random userMap
         addRandomUsers(7);
 
-        //create random transactionList
-        addRandomTransactions(10);
+        try {
+            //create random transactionList
+            //addRandomTransactions(15);
+        }catch (Exception ex){
+            Log.e(TAG, "fuck up : " + ex.toString());
+        }
 
         //create random settlements from the transactionList
         //show them in the adapter
@@ -86,7 +92,7 @@ public class Storage {
     }
 
     private void addRandomTransactions(int n) {
-        AddUser(YOU, 1212121212, "");
+        AddUser(YOU, 1898999999, "");
 
         if (userMap.size() < 2) {
             return;
@@ -142,22 +148,27 @@ public class Storage {
     public boolean addTransaction(Transaction transaction) {
         HashMap<String, HashMap<String, Double>> settlement = new HashMap<>();
 
-        if (transaction.calculateEverything(settlement)) {
-            transactionList.add(transaction);
+        try {
+            if (transaction.calculateEverything(settlement)) {
+                transactionList.add(transaction);
 
-            for (String payer : settlement.keySet()) {
-                for (String participant : settlement.get(payer).keySet()) {
+                for (String payer : settlement.keySet()) {
+                    for (String participant : settlement.get(payer).keySet()) {
 
-                    if (payer.compareTo(YOU) == 0) {
-                        addBalance(participant, settlement.get(payer).get(participant) * (-1.0));
-                    } else if (participant.compareTo(YOU) == 0) {
-                        addBalance(participant, settlement.get(payer).get(participant));
+                        if (payer.compareTo(YOU) == 0) {
+                            addBalance(participant, (settlement.get(payer).get(participant) * (-1.0)));
+                        } else if (participant.compareTo(YOU) == 0) {
+                            addBalance(payer, settlement.get(payer).get(participant));
+                        }
                     }
                 }
-            }
 
-            return true;
-        } else {
+                return true;
+            } else {
+                return false;
+            }
+        }catch (Exception ex){
+            Log.e(TAG, "fuck up : " + ex.toString());
             return false;
         }
     }

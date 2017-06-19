@@ -36,10 +36,6 @@ public class SendMoneyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-
-
         setContentView(R.layout.activity_send_money);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
@@ -55,24 +51,24 @@ public class SendMoneyActivity extends AppCompatActivity {
         final Button button = (Button) findViewById(R.id.transfer_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("hell", "how r");
                 try {
-
 
                     JSONObject json = new JSONObject();
                     json.put("AccountNumber", "30001512992");
                     String s = new com.MoneyPal.ServerConnection().execute(Utility.Account_List, json.toString(), SendToSBI).get();
                     //String s = new com.MoneyPal.ServerConnection().execute(Utility.Account_List, "{\"AccountNumber\": \"30001512992\" }").get();
-                    Log.d("tag", s);
+                    Log.d("SBI", s);
 
                     Notification notification = new Notification();
 
                     String s2 = new com.MoneyPal.ServerConnection().execute(Utility.FCM_URL, notification.getMyJSON2().toString(), SendToFCM).get();
 
-                    Log.d("tag", s2);
+                    Log.d("FCM", s2);
                 } catch (Exception e) {
                     Log.e("error", e.toString());
                 }
+                Toast.makeText(getApplicationContext(), "Money Transferred", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }

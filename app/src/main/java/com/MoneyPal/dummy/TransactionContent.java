@@ -1,9 +1,15 @@
 package com.MoneyPal.dummy;
 
+import android.util.Log;
+
 import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.Inventory.Transaction;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +26,8 @@ public class TransactionContent {
     /**
      * An array of sample (dummy) items.
      */
-    public List<TransationItem> ITEMS = new ArrayList<TransationItem>();
+    public ArrayList<TransationItem> ITEMS = new ArrayList<TransationItem>();
+    private static final String TAG = "TransactionContent";
 
     /**
      * A map of sample (dummy) items, by ID.
@@ -31,14 +38,22 @@ public class TransactionContent {
 
     private TransactionContent() {
 
-        HashMap userMap = Storage.getInstance().getUserMap();
-        List<Transaction> transactionList = Storage.getInstance().getTransactionList();
+        try {
+            HashMap userMap = Storage.getInstance().getUserMap();
+            List<Transaction> transactionList = Storage.getInstance().getTransactionList();
 
-        for (Object userObj : userMap.keySet()) {
-            TransationItem item = createTransactionItem(userObj.toString(), transactionList);
-            if(item != null) {
-                addItem(item);
+            for (Object userObj : userMap.keySet()) {
+                TransationItem item = createTransactionItem(userObj.toString(), transactionList);
+                if (item != null) {
+                    addItem(item);
+                }
             }
+
+            Collections.sort(ITEMS, new TransactionComparator());
+
+
+        }catch (Exception ex){
+            Log.e(TAG, ex.toString());
         }
     }
 
@@ -86,7 +101,7 @@ public class TransactionContent {
 //        }
 
         for (Transaction trans : transactionList){
-            if(trans.participants.contains(friend)){
+            if(trans.participants.contains(friend) || trans.payers.containsKey(friend)){
                 builder.append("\nTransaction: \n");
                 builder.append(trans.toString());
             }
@@ -112,6 +127,17 @@ public class TransactionContent {
         @Override
         public String toString() {
             return content;
+        }
+    }
+
+    public class TransactionComparator implements Comparator<TransationItem>
+    {
+        public int compare(TransationItem left, TransationItem right) {
+            double d1 = Double.parseDouble(left.content);
+            double d2 = Double.parseDouble(right.content);
+            d1 = Math.abs(d1);
+            d2 = Math.abs(d2);
+            return (int)(d2 - d1);
         }
     }
 }

@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 
+import com.MoneyPal.Activity.MainActivity;
+
 /**
  * Helper class for showing and canceling message
  * notifications.
@@ -56,7 +58,7 @@ public class MessageNotification {
         final String text = res.getString(
                 R.string.message_notification_placeholder_text_template, exampleString);
 
-        final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
 
                 // Set appropriate defaults for the notification light, sound,
                 // and vibration.
@@ -116,7 +118,7 @@ public class MessageNotification {
                 // content intent provides access to the same actions in
                 // another way.
                 .addAction(
-                        R.drawable.ic_action_stat_share,
+                        R.drawable.checkmark_medium_ff,
                         res.getString(R.string.action_share),
                         PendingIntent.getActivity(
                                 context,
@@ -128,12 +130,16 @@ public class MessageNotification {
                 .addAction(
                         R.drawable.ic_action_stat_reply,
                         res.getString(R.string.action_reply),
-                        null)
+                        PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0))
 
                 // Automatically dismiss the notification when it is touched.
                 .setAutoCancel(true);
 
         notify(context, builder.build());
+    }
+
+    private void addButton(){
+
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)

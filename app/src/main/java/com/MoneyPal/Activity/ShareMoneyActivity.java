@@ -25,6 +25,8 @@ import com.MoneyPal.Inventory.Transaction;
 import com.MoneyPal.R;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import static com.MoneyPal.Common.Utility.YOU;
+
 
 public class ShareMoneyActivity extends AppCompatActivity {
 
@@ -61,7 +63,12 @@ public class ShareMoneyActivity extends AppCompatActivity {
                 } else if (v == findViewById(R.id.add_participant)) {
                     addChildLayout(findViewById(R.id.participant_list));
                 } else if (v == findViewById(R.id.create_transaction)) {
-                    countEverything();
+                    if(countEverything() == true){
+                        makeToast("Transaction added");
+                        finish();
+                    } else {
+                        makeToast("Wrong transaction data");
+                    }
                 } else {
                     ((LinearLayout) (v.getParent())).removeAllViews();
                 }
@@ -69,7 +76,7 @@ public class ShareMoneyActivity extends AppCompatActivity {
         };
     }
 
-    private void countEverything() {
+    private boolean countEverything() {
         LinearLayout payers = (LinearLayout) findViewById(R.id.payer_list);
         LinearLayout participants = (LinearLayout) findViewById(R.id.participant_list);
 
@@ -79,6 +86,9 @@ public class ShareMoneyActivity extends AppCompatActivity {
 
             AutoCompleteTextView spinner = (AutoCompleteTextView) payers.getChildAt(i).findViewById(R.id.participant_name);
             String participant = spinner.getText().toString();
+            if(participant.compareTo("") == 0){
+                participant = YOU;
+            }
             EditText editText = (EditText) payers.getChildAt(i).findViewById(R.id.participant_contribution);
             Double amount = Double.parseDouble(editText.getText().toString());
             transaction.addPayer(participant, amount);
@@ -88,6 +98,10 @@ public class ShareMoneyActivity extends AppCompatActivity {
             //TODO get amount only if checked
             AutoCompleteTextView spinner = (AutoCompleteTextView) participants.getChildAt(i).findViewById(R.id.participant_name);
             String participant = spinner.getText().toString();
+
+            if(participant.compareTo("") == 0){
+                participant = YOU;
+            }
 
             CheckBox evenSplit = (CheckBox) findViewById(R.id.even_split);
             if (!evenSplit.isChecked()) {
@@ -101,10 +115,9 @@ public class ShareMoneyActivity extends AppCompatActivity {
 
         //transaction.calculateEverything();
         if (!Storage.getInstance().addTransaction(transaction)){
-            //TODO show error
-            makeToast("Wrong transaction data");
+            return false;
         }
-
+        return true;
     }
 
     private void addChildLayout(View v) {

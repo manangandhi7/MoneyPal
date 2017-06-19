@@ -1,6 +1,7 @@
 package com.MoneyPal.Activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.test.espresso.core.deps.dagger.internal.DoubleCheckLazy;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +29,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +40,7 @@ import com.MoneyPal.R;
 import com.MoneyPal.dummy.TransactionContent;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.MoneyPal.Common.IDGenerator.generateUniqueID;
@@ -90,17 +94,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        View recyclerView = findViewById(R.id.item_list);
-        assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
-
-        if (findViewById(R.id.item_detail_container) != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
-            mTwoPane = true;
-        }
+        bootMeUp();
 
         FirebaseMessaging.getInstance().subscribeToTopic(GLOBAL_SUBSCRIBE);
 //        if (getToken() != null) {
@@ -139,6 +133,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
+        bootMeUp();
+
 
         String userName = mPreferences.getString(USERNAME, "");
 
@@ -179,9 +175,73 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void settleDialogCode(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Settle Money");
+        final CharSequence[] items = {"Cash Settlement ","Request Money"};
+        final boolean[] bools = {true, false};
+        final ArrayList seletedItems=new ArrayList();
+        builder.setMultiChoiceItems(items, bools,
+                new DialogInterface.OnMultiChoiceClickListener() {
+                    // indexSelected contains the index of item (of which checkbox checked)
+                    @Override
+                    public void onClick(DialogInterface dialog, int indexSelected,
+                                        boolean isChecked) {
+                        if (isChecked) {
+                            // If the user checked the item, add it to the selected items
+                            // write your code when user checked the checkbox
+                            seletedItems.add(indexSelected);
+                        } else if (seletedItems.contains(indexSelected)) {
+                            // Else, if the item is already in the array, remove it
+                            // write your code when user Uchecked the checkbox
+                            seletedItems.remove(Integer.valueOf(indexSelected));
+                        }
+                    }
+                });
+
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String userName = "";
+                SharedPreferences.Editor editor = mPreferences.edit();
+                editor.putString(USERNAME, userName);
+                editor.commit();
+
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                View v = navigationView.getHeaderView(0);
+                TextView textView2 = (TextView) v.findViewById(R.id.nav_user_name);
+                textView2.setText(userName);
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         TransactionContent transactionContent = TransactionContent.getInstance();
         recyclerView.setAdapter(new MainActivity.SimpleItemRecyclerViewAdapter(transactionContent.ITEMS));
+    }
+
+    private void bootMeUp() {
+        View recyclerView = findViewById(R.id.item_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
+
+        if (findViewById(R.id.item_detail_container) != null) {
+            // The detail container view will be present only in the
+            // large-screen layouts (res/values-w900dp).
+            // If this view is present, then the
+            // activity should be in two-pane mode.
+            mTwoPane = true;
+        }
     }
 
     @Override
@@ -201,6 +261,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+    }
 
     private View.OnClickListener onClick() {
         return new View.OnClickListener() {
@@ -259,6 +324,9 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void onSendSettleRequestChanged(View view) {
+    }
+
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<MainActivity.SimpleItemRecyclerViewAdapter.ViewHolder> {
 
@@ -280,6 +348,13 @@ public class MainActivity extends AppCompatActivity
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(mValues.get(position).id);
             holder.mContentView.setText(mValues.get(position).content);
+
+            double amount = Double.parseDouble(mValues.get(position).content);
+            if (amount < 0) {
+                holder.mContentView.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+            } else {
+                holder.mContentView.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+            }
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -336,12 +411,12 @@ public class MainActivity extends AppCompatActivity
         Button button = (Button) v;
         //show alert dialog
 
+        settleDialogCode();
+
         //handle alert events
 
         //redraw the UI
 
         //voila
-
-        makeToast("clicked");
     }
 }
