@@ -22,6 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="22sp"
+        android:textColor="@color/Black"
         android:id="@+id/uniue_id_textbox" />
 
     <TextView
@@ -33,13 +34,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20sp"
         android:textSize="24sp"
+        android:textColor="@color/Black"
+
         android:id="@+id/uniue_id_profile" />
 
     <TextView
         android:text="Barcode:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/Black"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/uniue_id_profile"
         android:textSize="22sp"

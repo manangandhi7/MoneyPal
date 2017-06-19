@@ -3,7 +3,7 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
+    <string name="prompt_password">Password</string>
 
     <string name="prompt_sender">Sender</string>
     <string name="prompt_receiver">Receiver</string>
@@ -32,7 +32,22 @@
     <string name="title_friend_detail">Friend Detail</string>
     <string name="title_dostar_list">Friends</string>
     <string name="title_dostar_detail">Friend Detail</string>
-    <string name="title_activity_profile">ProfileActivity</string>
-    <string name="title_activity_bank_details">BankDetailsActivity</string>
-    <string name="title_activity_add_friend">AddFriendActivity</string>
+    <string name="title_activity_profile">Your Profile</string>
+    <string name="title_activity_bank_details">Your Bank Details</string>
+    <string name="title_activity_add_friend">Add Friend</string>
+
+    <string name="message_notification_title_template">Message: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="message_notification_placeholder_text_template">You said %1$s and lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel
+        semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
 </resources>

@@ -40,7 +40,9 @@
                     android:hint="@string/prompt_sender"
                     android:inputType="text|textAutoComplete"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@color/Black"
+                    android:textColorHint="@color/Gray" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -58,47 +60,52 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="text|textAutoComplete"
                     android:maxLines="1"
-                    android:singleLine="true" />
-
+                    android:singleLine="true"
+                    android:textColor="@color/Black"
+                    android:textColorHint="@color/Gray" />
 
 
             </android.support.design.widget.TextInputLayout>
             <!--<android.support.design.widget.TextInputLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-                <!--<Spinner-->
-                    <!--android:id="@+id/spinner"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="@string/prompt_receiver"-->
-                    <!--android:maxLines="1"-->
-                    <!--android:background="@android:drawable/btn_dropdown"-->
-                    <!--android:spinnerMode="dropdown" />-->
+            <!--<Spinner-->
+            <!--android:id="@+id/spinner"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/prompt_receiver"-->
+            <!--android:maxLines="1"-->
+            <!--android:background="@android:drawable/btn_dropdown"-->
+            <!--android:spinnerMode="dropdown" />-->
             <!--</android.support.design.widget.TextInputLayout>-->
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/amount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeActionLabel="@string/action_amount"
-                android:imeOptions="actionUnspecified"
-                android:hint="@string/prompt_amount"
-                android:inputType="numberDecimal"
-                android:ems="10" />
+
+                <EditText
+                    android:id="@+id/amount"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/prompt_amount"
+                    android:imeActionLabel="@string/action_amount"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/Black"
+                    android:textColorHint="@color/Gray" />
 
             </android.support.design.widget.TextInputLayout>
 
             <CheckBox
-                android:text="Transfer Now"
+                android:id="@+id/transfer_now"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/transfer_now"
                 android:checked="true"
-                android:onClick="onTransferNowChanged"/>
+                android:onClick="onTransferNowChanged"
+                android:text="Transfer Now" />
 
             <Button
                 android:id="@+id/transfer_button"

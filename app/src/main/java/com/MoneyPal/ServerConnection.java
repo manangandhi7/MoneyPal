@@ -31,8 +31,9 @@ public class ServerConnection extends AsyncTask<String, Void, String> {
 
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
+
     @Override
-   protected String doInBackground(String... urls) {
+    protected String doInBackground(String... urls) {
 
         OkHttpClient client = new OkHttpClient();
         //TODO create new asynctask and its ready to go!!
@@ -46,11 +47,11 @@ public class ServerConnection extends AsyncTask<String, Void, String> {
 
             if (urls.length > 2 && urls[2] == SendToSBI) {
                 request = request.newBuilder().addHeader(SBI_API_KEY_STRING, SBI_API_KEY).build();
-            } else if (urls.length > 2 && urls[2] == SendToFCM){
+            } else if (urls.length > 2 && urls[2] == SendToFCM) {
                 request = request.newBuilder().addHeader(AUTHORIZATION_STRING, AUTHORIZATION_KEY).build();
             }
 
-            Log.d ("request", request.toString());
+            Log.d("request", request.toString());
 
             Response response = client.newCall(request).execute();
             String s = response.body().string();
@@ -62,17 +63,15 @@ public class ServerConnection extends AsyncTask<String, Void, String> {
         }
     }
 
-    private Response sendToSBIAPI(String... urls){
+    private Response sendToSBIAPI(String... urls) {
         Response response = null;
-
 
 
         return response;
     }
 
-    private Response sendMessageToFCM(String... urls){
+    private Response sendMessageToFCM(String... urls) {
         Response response = null;
-
 
 
         return response;

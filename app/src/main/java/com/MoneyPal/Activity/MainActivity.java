@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.MoneyPal.Inventory.Storage;
+import com.MoneyPal.MessageNotification;
 import com.MoneyPal.R;
 import com.MoneyPal.dummy.TransactionContent;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -247,6 +248,7 @@ public class MainActivity extends AppCompatActivity
             //intent.putExtra(EXTRA_MESSAGE, message);
             startActivity(intent);
         } else if (id == R.id.nav_share) {
+            MessageNotification.notify(getApplicationContext(), "maja aai gai", 5);
 
         } else if (id == R.id.nav_send) {
 

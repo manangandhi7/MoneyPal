@@ -35,6 +35,11 @@ public class SendMoneyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
+
         setContentView(R.layout.activity_send_money);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,

@@ -18,16 +18,18 @@
 
 
     <LinearLayout
+        android:gravity="center_vertical"
         android:id="@+id/payers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <TextView
+            android:textColor="@color/Black"
             android:id="@+id/payer_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+
             android:layout_weight="0.9"
             android:text="Payers" />
 
@@ -49,34 +51,36 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_gravity="center_vertical"
         android:id="@+id/participants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <TextView
+            android:textColor="@color/Black"
             android:id="@+id/participants_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+
             android:layout_weight="0.5"
             android:text="Participant(s)" />
 
         <CheckBox
-            android:text="Even split"
+            android:id="@+id/even_split"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/even_split"
             android:layout_weight="0.4"
             android:checked="true"
-            android:onClick="onSplitSettingChanged"/>
+            android:onClick="onSplitSettingChanged"
+            android:text="Even split" />
 
         <Button
             android:id="@+id/add_participant"
             android:layout_width="wrap_content"
-            android:layout_weight="0.1"
+
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+
             android:text="Add+" />
     </LinearLayout>
 
@@ -99,11 +103,7 @@
             android:id="@+id/create_transaction"
             android:layout_weight="1"
             />
-
     </LinearLayout>
-
-
-
 
 </LinearLayout>
 </ScrollView>
