@@ -1,11 +1,10 @@
-package com.MoneyPal.dummy;
+package com.MoneyPal.Content;
 
 import android.util.Log;
 
 import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.Inventory.Transaction;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import java.util.Collections;
@@ -13,7 +12,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 /**
  * Helper class for providing sample content for user interfaces created by

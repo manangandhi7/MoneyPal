@@ -59,8 +59,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.MoneyPal.Activity.MainActivity" />
         </activity>
-        <activity android:name=".Activity.SendMoneyActivity" />
-        <activity android:name=".Activity.ShareMoneyActivity" />
+        <activity android:name=".Activity.SendMoneyActivity"
+            android:label="Send Money"
+            android:parentActivityName=".Activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.MoneyPal.Activity.MainActivity" />
+            </activity>
+
+        <activity android:name=".Activity.ShareMoneyActivity"
+            android:label="Add Transaction"
+            android:parentActivityName=".Activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.MoneyPal.Activity.MainActivity" />
+        </activity>
         <activity
             android:name=".Activity.DostarListActivity"
             android:label="@string/title_dostar_list"

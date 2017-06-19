@@ -1,4 +1,4 @@
-package com.MoneyPal.dummy;
+package com.MoneyPal.Content;
 
 import com.MoneyPal.Common.IDGenerator;
 import com.MoneyPal.Inventory.Storage;

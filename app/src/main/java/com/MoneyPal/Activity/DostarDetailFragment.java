@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.MoneyPal.R;
-import com.MoneyPal.dummy.DostarContent;
+import com.MoneyPal.Content.DostarContent;
 
 /**
  * A fragment representing a single Dostar detail screen.

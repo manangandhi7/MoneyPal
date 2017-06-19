@@ -37,7 +37,7 @@ public class Storage {
 
         try {
             //create random transactionList
-            //addRandomTransactions(10);
+            addRandomTransactions(10);
         }catch (Exception ex){
             Log.e(TAG, "fuck up : " + ex.toString());
         }

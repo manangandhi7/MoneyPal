@@ -50,6 +50,8 @@ public class ShareMoneyActivity extends AppCompatActivity {
 //            Log.d("token", refreshedToken);
 //            makeToast(refreshedToken);
 //        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private View.OnClickListener onClick() {

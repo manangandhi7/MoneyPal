@@ -19,7 +19,7 @@ import android.view.MenuItem;
 
 import com.MoneyPal.R;
 
-import com.MoneyPal.dummy.DostarContent;
+import com.MoneyPal.Content.DostarContent;
 
 import java.util.List;
 

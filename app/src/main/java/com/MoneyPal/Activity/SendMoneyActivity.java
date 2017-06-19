@@ -67,6 +67,8 @@ public class SendMoneyActivity extends AppCompatActivity {
                 finish();
             }
         });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private boolean sendMoney(String from, String to, double amount) {

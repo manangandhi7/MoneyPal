@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.MoneyPal.R;
-import com.MoneyPal.dummy.TransactionContent;
+import com.MoneyPal.Content.TransactionContent;
 
 /**
  * A fragment representing a single Item detail screen.
