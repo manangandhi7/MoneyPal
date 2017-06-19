@@ -2,6 +2,7 @@ package com.MoneyPal.dummy;
 
 import com.MoneyPal.Common.IDGenerator;
 import com.MoneyPal.Inventory.Storage;
+import com.MoneyPal.Inventory.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +34,9 @@ public class DostarContent {
 
         int i = 1;
         for (Object userObj : userMap.keySet()) {
-            addItem(createDostarItem(i++, userObj.toString()));
+            String user = userObj.toString();
+            String uniqueID = ((User)userMap.get(user)).uniqueID;
+            addItem(createDostarItem(i++, user, uniqueID));
         }
     }
 
@@ -43,8 +46,8 @@ public class DostarContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private DostarItem createDostarItem(int position, String name) {
-        return new DostarItem(String.valueOf(position), name, makeDetails(position));
+    private DostarItem createDostarItem(int position, String name, String uniqueID) {
+        return new DostarItem(String.valueOf(position), name, uniqueID);
     }
 
     private static String makeDetails(int position) {
