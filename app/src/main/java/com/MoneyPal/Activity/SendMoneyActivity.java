@@ -19,6 +19,7 @@ import com.MoneyPal.Inventory.Notification;
 import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.R;
 
+import com.MoneyPal.ServerConnection;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -51,13 +52,13 @@ public class SendMoneyActivity extends AppCompatActivity {
 
                     JSONObject json = new JSONObject();
                     json.put("AccountNumber", "30001512992");
-                    String s = new com.MoneyPal.ServerConnection().execute(Utility.Account_List, json.toString(), SendToSBI).get();
+                    String s = new ServerConnection().execute(Utility.Account_List, json.toString(), SendToSBI).get();
                     //String s = new com.MoneyPal.ServerConnection().execute(Utility.Account_List, "{\"AccountNumber\": \"30001512992\" }").get();
                     Log.d("SBI", s);
 
                     Notification notification = new Notification();
 
-                    String s2 = new com.MoneyPal.ServerConnection().execute(Utility.FCM_URL, notification.getJSONData().toString(), SendToFCM).get();
+                    String s2 = new ServerConnection().execute(Utility.FCM_URL, notification.getJSONData().toString(), SendToFCM).get();
 
                     Log.d("FCM", s2);
                 } catch (Exception e) {
