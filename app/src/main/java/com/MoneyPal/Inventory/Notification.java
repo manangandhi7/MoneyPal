@@ -1,5 +1,7 @@
 package com.MoneyPal.Inventory;
 
+import android.content.SharedPreferences;
+
 import org.json.JSONObject;
 
 import static com.MoneyPal.Common.Utility.GLOBAL_SEND;
@@ -12,6 +14,9 @@ public class Notification {
     private static final String TITLE = "title";
     private static final String BODY = "body";
     private static final String TO = "to";
+    private static final String FROM = "from";
+    private static final String FROMUser = "from_user";
+    private static final String TOUSER = "to_user";
     private static final String DATA = "data";
     private static final String NOTIFICATION = "notification";
     private static final String MESSAGE = "message";
@@ -20,6 +25,17 @@ public class Notification {
     public String body;
     public String to;
     public String data;
+    public String fromUniqueID;
+    public String toUniqueID;
+
+    public Notification(){
+        title = "A new message from MoneyPal";
+        body = "";
+        to = "";
+        data = "";
+        fromUniqueID = "";
+        toUniqueID = "";
+    }
 
     public JSONObject getMyJSON(){
         JSONObject json = new JSONObject();
@@ -43,11 +59,35 @@ public class Notification {
 
         try {
             JSONObject notification = new JSONObject();
+            notification.put(TITLE, title);
+            notification.put(BODY, body);
+            //notification.put (MESSAGE, "Hey hey good looking!");
+            json.put(NOTIFICATION, notification);
+            //json.put(DATA, data);
+            json.put(TO, GLOBAL_SEND);
+        } catch (Exception ex){
+
+        }
+
+        return json;
+    }
+
+    public JSONObject getJSONData(){
+        JSONObject json = new JSONObject();
+
+        try {
+            JSONObject notification = new JSONObject();
             notification.put(TITLE, TITLE);
             notification.put(BODY, BODY);
             //notification.put (MESSAGE, "Hey hey good looking!");
-            json.put(NOTIFICATION, notification);
-            //json.put(DATA, notification);
+            //json.put(NOTIFICATION, notification);
+
+            JSONObject data = new JSONObject();
+            data.put(MESSAGE, "");
+            data.put(TOUSER, toUniqueID);
+            data.put(FROMUser, fromUniqueID);
+            data.put("not_message_type", "mytype"); //TODO : handle message accordingly on the receiving end
+            json.put(DATA, data);
             json.put(TO, GLOBAL_SEND);
         } catch (Exception ex){
 

@@ -57,7 +57,7 @@ public class SendMoneyActivity extends AppCompatActivity {
 
                     Notification notification = new Notification();
 
-                    String s2 = new com.MoneyPal.ServerConnection().execute(Utility.FCM_URL, notification.getMyJSON2().toString(), SendToFCM).get();
+                    String s2 = new com.MoneyPal.ServerConnection().execute(Utility.FCM_URL, notification.getJSONData().toString(), SendToFCM).get();
 
                     Log.d("FCM", s2);
                 } catch (Exception e) {
