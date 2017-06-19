@@ -40,12 +40,8 @@ public class SendMoneyActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, Storage.getInstance().getUsersArray());
-        //TODO drop down menu will be better, slect karo etle list popup thay, wither select existing one or create new one
-//        Spinner textView = (Spinner)
-//                findViewById(R.id.spinner);
         AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView)
                 findViewById(R.id.receiver);
-//        textView.setAdapter(adapter);
         autoCompleteTextView.setAdapter(adapter);
 
         final Button button = (Button) findViewById(R.id.transfer_button);

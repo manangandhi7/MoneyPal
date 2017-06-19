@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/enter_name_textbox"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="10sp"
         android:textSize="20sp"
         android:id="@+id/friend_name" />
 
@@ -43,6 +43,7 @@
         android:layout_below="@+id/friend_name"
         android:layout_centerHorizontal="true"
         android:textSize="22sp"
+        android:layout_marginTop="20sp"
         android:id="@+id/enter_id_textbox"
 
         />
@@ -53,7 +54,7 @@
         android:weightSum="1"
         android:orientation="horizontal"
         android:layout_below="@+id/enter_id_textbox"
-        android:layout_marginTop="20sp">
+        android:layout_marginTop="10sp">
 
         <AutoCompleteTextView
             android:textColorHint="@color/Gray"

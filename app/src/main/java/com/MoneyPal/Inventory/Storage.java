@@ -6,6 +6,8 @@ package com.MoneyPal.Inventory;
 
 import android.util.Log;
 
+import com.MoneyPal.Common.IDGenerator;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -35,7 +37,7 @@ public class Storage {
 
         try {
             //create random transactionList
-            //addRandomTransactions(15);
+            //addRandomTransactions(10);
         }catch (Exception ex){
             Log.e(TAG, "fuck up : " + ex.toString());
         }
@@ -54,14 +56,15 @@ public class Storage {
         return instance;
     }
 
-    public boolean AddUser(String email, int phoneNo, String password) {
-        if (validUser(email, phoneNo)) {
+    public boolean AddUser(String name, String uniqueID) {
+        if (validUser(name, uniqueID)) {
             User user = new User();
-            user.email = email;
-            user.phoneNo = phoneNo;
-            user.password = password;
+            user.email = "";
+            user.phoneNo = 0;
+            user.password = "";
+            user.uniqueID= uniqueID;
 
-            userMap.put(email, user);
+            userMap.put(name, user);
 
             return true;
         }
@@ -75,24 +78,22 @@ public class Storage {
 
     private void addRandomUsers(int n) {
         for (int i = 0; i < 3; ++i) {
-            AddUser(POSSIBLE_FRIENDS[i], 1212121212, "");
+            AddUser(POSSIBLE_FRIENDS[i], IDGenerator.generateUniqueID());
         }
 
         Random r = new Random();
         for (int i = 0; i < n - 3; i++) {
             int random = r.nextInt(POSSIBLE_FRIENDS.length - 1);
 
-            if (!validUser(POSSIBLE_FRIENDS[random], 567)) { //too expensive operation!
+            if (!AddUser(POSSIBLE_FRIENDS[random], IDGenerator.generateUniqueID())) {
                 i--;
                 continue;
-            } else {
-                AddUser(POSSIBLE_FRIENDS[random], 1212121212, "");
             }
         }
     }
 
     private void addRandomTransactions(int n) {
-        AddUser(YOU, 1898999999, "");
+        AddUser(YOU, IDGenerator.generateUniqueID());
 
         if (userMap.size() < 2) {
             return;
@@ -199,10 +200,10 @@ public class Storage {
         return false;
     }
 
-    public boolean validUser(String email, int phoneNo) {
+    public boolean validUser(String name, String UniqueID) {
         boolean found = false;
         for (User user : userMap.values()) {
-            if (user.email == email) {
+            if (user.name.compareToIgnoreCase(name) == 0 || user.uniqueID.compareToIgnoreCase(UniqueID) == 0) {
                 found = true;
                 break;
             }

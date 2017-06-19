@@ -16,21 +16,21 @@ public class IDGenerator {
         String uniqueID = "";
         Random r = new Random();
 
-        int index = r.nextInt(arr.length);
-        uniqueID += arr[index].toUpperCase();
+        int index = r.nextInt(UniqueIDs.length);
+        uniqueID += UniqueIDs[index].toUpperCase();
         uniqueID += "_";
 
-        index = r.nextInt(arr.length);
-        uniqueID += arr[index].toUpperCase();
+        index = r.nextInt(UniqueIDs.length);
+        uniqueID += UniqueIDs[index].toUpperCase();
         uniqueID += "_";
 
-        index = r.nextInt(arr.length);
-        uniqueID += arr[index].toUpperCase();
+        index = r.nextInt(UniqueIDs.length);
+        uniqueID += UniqueIDs[index].toUpperCase();
 
         return uniqueID;
     }
 
-    public static String arr[] = {
+    public static String UniqueIDs[] = {
             "hello",
             "apple",
             "samsung",
