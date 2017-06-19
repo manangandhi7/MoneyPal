@@ -35,7 +35,10 @@ public class TransactionContent {
         List<Transaction> transactionList = Storage.getInstance().getTransactionList();
 
         for (Object userObj : userMap.keySet()) {
-            addItem(createTransactionItem(userObj.toString(), transactionList));
+            TransationItem item = createTransactionItem(userObj.toString(), transactionList);
+            if(item != null) {
+                addItem(item);
+            }
         }
     }
 
@@ -55,15 +58,19 @@ public class TransactionContent {
     private  TransationItem createTransactionItem(String friend, List<Transaction> transactionList) {
 
 
-        Random r = new Random();
-        int number = r.nextInt();
+//        Random r = new Random();
+//        int number = r.nextInt();
+//
+//        String sign = "+";
+//        if (number % 2 == 0){
+//            sign = "-";
+//        }
 
-        String sign = "+";
-        if (number % 2 == 0){
-            sign = "-";
+        if (!Storage.getInstance().balanceMap.containsKey(friend)){
+            return null;
         }
 
-        return new TransationItem(String.valueOf(friend), sign + new Random().nextInt(500), makeDetails(friend, transactionList));
+        return new TransationItem(String.valueOf(friend), Storage.getInstance().balanceMap.get(friend).toString(), makeDetails(friend, transactionList));
     }
 
     private  String makeDetails(String friend, List<Transaction> transactionList) {
@@ -80,7 +87,8 @@ public class TransactionContent {
 
         for (Transaction trans : transactionList){
             if(trans.participants.contains(friend)){
-                builder.append("\nMore details information here.");
+                builder.append("\nTransaction: \n");
+                builder.append(trans.toString());
             }
         }
 

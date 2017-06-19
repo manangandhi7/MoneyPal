@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import static com.MoneyPal.Common.Utility.YOU;
+
 public class Storage {
 
     private static final String TAG = "Storage";
@@ -18,13 +20,13 @@ public class Storage {
 
     private HashMap<String, User> userMap;
     private List<Transaction> transactionList;
-    private List<Balance> balance;
+    public HashMap<String, Double> balanceMap;
     private static Storage instance;
 
     private Storage() {
         userMap = new HashMap<String, User>();
         transactionList = new ArrayList<>();
-        balance = new ArrayList<Balance>();
+        balanceMap = new HashMap<>();
 
         //add random userMap
         addRandomUsers(7);
@@ -84,17 +86,20 @@ public class Storage {
     }
 
     private void addRandomTransactions(int n) {
+        AddUser(YOU, 1212121212, "");
 
         if (userMap.size() < 2) {
             return;
         }
         int numUsers = userMap.size();
         String[] users = userMap.keySet().toArray(new String[numUsers]);
-        ArrayList<String> usersList = new ArrayList<>(Arrays.asList(users));
+        //ArrayList<String> usersList = new ArrayList<>(Arrays.asList(users));
 
         Random r = new Random();
         for (int trans = 0; trans < n; trans++) {
             Transaction transaction = new Transaction();
+            ArrayList<String> usersList = new ArrayList<>(Arrays.asList(users));
+
 
             int random = r.nextInt(1) + 1;
             int totalAmount = 0;
@@ -123,8 +128,47 @@ public class Storage {
             }
             transaction.addParticipant(usersList.get(0), totalAmount);
 
-            transaction.calculateEverything();
+            addTransaction(transaction);
+        }
+        deleteUser(YOU);
+    }
+
+    private void deleteUser(String user){
+        if(userMap.containsKey(user)) {
+            userMap.remove(YOU);
+        }
+    }
+
+    public boolean addTransaction(Transaction transaction) {
+        HashMap<String, HashMap<String, Double>> settlement = new HashMap<>();
+
+        if (transaction.calculateEverything(settlement)) {
             transactionList.add(transaction);
+
+            for (String payer : settlement.keySet()) {
+                for (String participant : settlement.get(payer).keySet()) {
+
+                    if (payer.compareTo(YOU) == 0) {
+                        addBalance(participant, settlement.get(payer).get(participant) * (-1.0));
+                    } else if (participant.compareTo(YOU) == 0) {
+                        addBalance(participant, settlement.get(payer).get(participant));
+                    }
+                }
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void addBalance(String friend, double amount) {
+        if (!balanceMap.containsKey(friend)) {
+            balanceMap.put(friend, 0.0);
+        }
+        balanceMap.put(friend, balanceMap.get(friend) + amount);
+        if (balanceMap.get(friend) == 0.0) {
+            balanceMap.remove(friend);
         }
     }
 

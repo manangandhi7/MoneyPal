@@ -99,7 +99,11 @@ public class ShareMoneyActivity extends AppCompatActivity {
             }
         }
 
-        transaction.calculateEverything();
+        //transaction.calculateEverything();
+        if (!Storage.getInstance().addTransaction(transaction)){
+            //TODO show error
+            makeToast("Wrong transaction data");
+        }
 
     }
 

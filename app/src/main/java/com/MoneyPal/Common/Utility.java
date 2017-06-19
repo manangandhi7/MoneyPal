@@ -38,6 +38,7 @@ public class Utility {
     public static final String GLOBAL_SUBSCRIBE = "global";
     public static final String UNIQUE_ID = "unique_id";
     public static final String USERNAME = "user_name";
+    public static final String YOU = "You";
 
     public static final String GLOBAL_SEND = "/topics/" + GLOBAL_SUBSCRIBE;
 

@@ -14,16 +14,18 @@ public class Transaction {
 
     public int ID;
 
-    public enum TYPE{
+    public enum TYPE {
         SEND,
         RECEIVE,
         Paid_for_friend,
         Shared_bill,
         Trip,
         Other
-    };
+    }
 
-    public enum STATUS{
+    ;
+
+    public enum STATUS {
         Finished,
         Init,
         In_process,
@@ -41,7 +43,7 @@ public class Transaction {
     public HashMap<String, Double> participantsVaried;
     public HashSet<String> participants;
 
-    public Transaction(){
+    public Transaction() {
         ID = 0;
         payers = new HashMap<>();
         participantsVaried = new HashMap<String, Double>();
@@ -50,38 +52,39 @@ public class Transaction {
 
     }
 
-    public void addPayer(String payer, double amount){
+    public void addPayer(String payer, double amount) {
         //TODO: jo user store ma na hoy to add kar navo
         payers.put(payer, amount);
     }
 
-    public void addParticipant(String participant, double amount){
+    public void addParticipant(String participant, double amount) {
         participantsVaried.put(participant, amount);
         addParticipant(participant);
     }
-    public void addParticipant(String participant){
-        participants.add (participant);
+
+    public void addParticipant(String participant) {
+        participants.add(participant);
     }
 
-    public boolean calculateEverything(){
+    public boolean calculateEverything(HashMap<String, HashMap<String, Double>> settlement) {
         HashMap<String, Double> payersBalance = new HashMap<String, Double>();
-        HashMap<String, HashMap<String, Double> > settlement = new HashMap<>();
+        //HashMap<String, HashMap<String, Double>> settlement = new HashMap<>();
 
         double totalPaid = 0.0;
-        for(String user : payers.keySet()){
+        for (String user : payers.keySet()) {
             totalPaid += (Double) payers.get(user);
         }
 
         HashMap<String, Double> expenses = new HashMap<String, Double>();
 
         double totalExpense = 0.0;
-        for(String user : participantsVaried.keySet()){
+        for (String user : participantsVaried.keySet()) {
             expenses.put(user, (Double) participantsVaried.get(user));
             totalExpense += (Double) participantsVaried.get(user);
         }
 
-        if (participantsVaried.size() == participants.size()){
-            if( totalPaid - totalExpense != 0){
+        if (participantsVaried.size() == participants.size()) {
+            if (totalPaid - totalExpense != 0) {
                 return false;
             }
         } else if (totalPaid - totalExpense < 0) {
@@ -90,29 +93,29 @@ public class Transaction {
 
         double bakiPerHead = (totalPaid - totalExpense) / (participantsVaried.size() - participants.size());
 
-        for(Object userObj : participants.toArray()){
+        for (Object userObj : participants.toArray()) {
             String user = userObj.toString();
-            if(!participantsVaried.containsKey(user)){
+            if (!participantsVaried.containsKey(user)) {
                 expenses.put(user, new Double(bakiPerHead));
             }
         }
 
-        for (String user : payers.keySet()){
+        for (String user : payers.keySet()) {
             payersBalance.put(user, (Double) payers.get(user));
         }
 
-        for (String user : payersBalance.keySet()){ //chalu ma value update thay che, joi le
-            if(!expenses.containsKey(user)){
+        for (String user : payersBalance.keySet()) { //chalu ma value update thay che, joi le
+            if (!expenses.containsKey(user)) {
                 continue;
             }
 
             double expense = (Double) expenses.get(user);
             double paid = (Double) payersBalance.get(user);
 
-            if(paid > expense){
+            if (paid > expense) {
                 payersBalance.put(user, (Double) paid - expense);
                 expenses.remove(user);
-            } else if (expense > paid){
+            } else if (expense > paid) {
                 payersBalance.remove(user);
                 expenses.put(user, (Double) expense - paid);
             } else {
@@ -123,44 +126,44 @@ public class Transaction {
 
 //        Set <String> expenseSet = expenses.keySet();
 
-        Iterator<Map.Entry<String,Double>> dendarIter = expenses.entrySet().iterator();
+        Iterator<Map.Entry<String, Double>> dendarIter = expenses.entrySet().iterator();
 
-        while (dendarIter.hasNext()){
-            Map.Entry<String,Double> dendarPair = dendarIter.next();
+        while (dendarIter.hasNext()) {
+            Map.Entry<String, Double> dendarPair = dendarIter.next();
             double aapvana = (Double) dendarPair.getValue();
             String dendar = dendarPair.getKey();
 
-            Iterator<Map.Entry<String,Double>> lendarIter  =payersBalance.entrySet().iterator();
+            Iterator<Map.Entry<String, Double>> lendarIter = payersBalance.entrySet().iterator();
 
-            while (lendarIter.hasNext()){
-                Map.Entry<String,Double> lendarPair = lendarIter.next();
+            while (lendarIter.hasNext()) {
+                Map.Entry<String, Double> lendarPair = lendarIter.next();
 
                 double levana = (Double) lendarPair.getValue();
                 String lendar = lendarPair.getKey();
 
-                if(levana > aapvana){
+                if (levana > aapvana) {
                     payersBalance.put(lendar, (Double) levana - aapvana);
                     //expenses.remove(dendar);
                     dendarIter.remove();
 
-                    if (!settlement.containsKey(lendar)){
-                        settlement.put (lendar, new HashMap<String, Double>());
+                    if (!settlement.containsKey(lendar)) {
+                        settlement.put(lendar, new HashMap<String, Double>());
                     }
 
-                    HashMap<String, Double> temp = (HashMap<String, Double>)settlement.get(lendar);
+                    HashMap<String, Double> temp = (HashMap<String, Double>) settlement.get(lendar);
                     temp.put(dendar, (Double) aapvana);
                     break;
-                } else if (aapvana > levana){
+                } else if (aapvana > levana) {
                     //payersBalance.remove(lendar);
                     lendarIter.remove();
 
                     expenses.put(dendar, (Double) aapvana - levana);
 
-                    if (!settlement.containsKey(lendar)){
-                        settlement.put (lendar, new HashMap<String, Double>());
+                    if (!settlement.containsKey(lendar)) {
+                        settlement.put(lendar, new HashMap<String, Double>());
                     }
 
-                    HashMap<String, Double> temp = (HashMap<String, Double>)settlement.get(lendar);
+                    HashMap<String, Double> temp = (HashMap<String, Double>) settlement.get(lendar);
                     temp.put(dendar, (Double) levana);
 
                 } else {
@@ -170,11 +173,11 @@ public class Transaction {
                     lendarIter.remove();
 
 
-                    if (!settlement.containsKey(lendar)){
-                        settlement.put (lendar, new HashMap<String, Double>());
+                    if (!settlement.containsKey(lendar)) {
+                        settlement.put(lendar, new HashMap<String, Double>());
                     }
 
-                    HashMap<String, Double> temp = (HashMap<String, Double>)settlement.get(lendar);
+                    HashMap<String, Double> temp = (HashMap<String, Double>) settlement.get(lendar);
                     temp.put(dendar, (Double) aapvana);
                     break;
                 }
@@ -182,6 +185,30 @@ public class Transaction {
         }
 
         return true;
+    }
+
+    public String toString() {
+        String transString = "";
+        String tab = "\t";
+
+        transString += "Payer(s): \n";
+
+        for (String payer : payers.keySet()) {
+            transString += tab + payer + " : " + payers.get(payer).toString() + "\n";
+        }
+        transString += "Participants(s): \n";
+
+        for (String payer : participantsVaried.keySet()) {
+            transString += tab + payer + " : " + participantsVaried.get(payer).toString() + "\n";
+        }
+        if (participants.size() > participantsVaried.size()) {
+            for (String payer : participants) {
+                if (!participantsVaried.containsKey(payer)) {
+                    transString += tab + payer + " : " + " EQUAL " + "\n";
+                }
+            }
+        }
+        return transString;
     }
 
 }
