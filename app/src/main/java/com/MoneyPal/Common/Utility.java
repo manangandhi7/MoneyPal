@@ -42,6 +42,33 @@ public class Utility {
 
     public static final String GLOBAL_SEND = "/topics/" + GLOBAL_SUBSCRIBE;
 
+    public static final String NOTIFICATION_TITLE = "title";
+    public static final String NOTIFICATION_BODY = "body";
+    public static final String NOTIFICATION_TO = "to";
+    public static final String NOTIFICATION_FROMName = "from_user_name";
+    public static final String NOTIFICATION_FROMID = "from_id";
+    public static final String NOTIFICATION_ToID = "to_id";
+    public static final String NOTIFICATION_AMOUNT = "amount";
+    public static final String NOTIFICATION_MSG_TYPE = "not_msg_type";
+    public static final String NOTIFICATION_MSG_REFNUM = "msg_ref_num";
+
+
+    public static final String NOTIFICATION_TOUSER = "to_user";
+    public static final String NOTIFICATION_DATA = "data";
+    public static final String NOTIFICATION_NOTIFICATION = "notification";
+    public static final String NOTIFICATION_MESSAGE = "message";
+
+
+
+       public static final String SETTLEMENT_REQ = "SETTLEMENT_REQ ";
+    public static final String SETTLEMENT_RES_OK = "SETTLEMENT_RES_OK";
+    public static final String SETTLEMENT_USER_IN_QUE = "";
+       public static final String SETTLEMENT_RES_NOT_OK = "SETTLEMENT_RES_NOT_OK";
+       public static final String MONEY_RECEIVED = "MONEY_RECEIVED";
+       public static final String MONEY_SETTLED = "MONEY_SETTLED";
+       public static final String MONEY_REQUEST = "MONEY_REQUEST";
+       public static final String MONEY_REQUEST_OK = "MONEY_REQUEST_OK";
+       public static final String MONEY_REQUEST_NOT_OK = "MONEY_REQUEST_NOT_OK";
 
     public static String getToken() {
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();

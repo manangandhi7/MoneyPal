@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.test.espresso.core.deps.dagger.internal.DoubleCheckLazy;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -24,19 +26,33 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.MoneyPal.Common.Utility;
+import com.MoneyPal.Inventory.Notification;
+import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.MessageNotification;
 import com.MoneyPal.R;
 import com.MoneyPal.Content.TransactionContent;
+import com.MoneyPal.ServerConnection;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.MoneyPal.Common.IDGenerator.generateUniqueID;
 import static com.MoneyPal.Common.Utility.GLOBAL_SUBSCRIBE;
+import static com.MoneyPal.Common.Utility.NOTIFICATION_AMOUNT;
+import static com.MoneyPal.Common.Utility.NOTIFICATION_MSG_TYPE;
+import static com.MoneyPal.Common.Utility.SETTLEMENT_REQ;
+import static com.MoneyPal.Common.Utility.SETTLEMENT_RES_OK;
+import static com.MoneyPal.Common.Utility.SETTLEMENT_USER_IN_QUE;
+import static com.MoneyPal.Common.Utility.SendToFCM;
 import static com.MoneyPal.Common.Utility.UNIQUE_ID;
 import static com.MoneyPal.Common.Utility.USERNAME;
 
@@ -93,6 +109,8 @@ public class MainActivity extends AppCompatActivity
 //            Log.d("token", getToken());
 //        }
 
+        //makeToast("hiii" + getIntent().getStringExtra("extra") );
+
         //unique ID
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String uniqueID = mPreferences.getString(UNIQUE_ID, "");
@@ -119,6 +137,8 @@ public class MainActivity extends AppCompatActivity
 
         TextView textView2 = (TextView) v.findViewById(R.id.nav_user_name);
         textView2.setText(userName);
+
+        handleNotification();
     }
 
     @Override
@@ -166,12 +186,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void settleDialogCode(){
+    private void settleDialogCode(final String user, final double amount){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Settle Money");
         final CharSequence[] items = {"Cash Settlement ","Request Money"};
-        final boolean[] bools = {true, false};
+        final boolean[] bools = {false, true};
         final ArrayList seletedItems=new ArrayList();
+
+
         builder.setMultiChoiceItems(items, bools,
                 new DialogInterface.OnMultiChoiceClickListener() {
                     // indexSelected contains the index of item (of which checkbox checked)
@@ -194,15 +216,22 @@ public class MainActivity extends AppCompatActivity
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String userName = "";
-                SharedPreferences.Editor editor = mPreferences.edit();
-                editor.putString(USERNAME, userName);
-                editor.commit();
 
-                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-                View v = navigationView.getHeaderView(0);
-                TextView textView2 = (TextView) v.findViewById(R.id.nav_user_name);
-                textView2.setText(userName);
+                try {
+                    Notification notification = new Notification();
+                    notification.toUniqueID = Storage.getInstance().getUserMap().get(user).name;
+                    notification.MessageType = SETTLEMENT_REQ;
+                    notification.amount = Double.toString(amount);
+                    notification.userInQue = user;
+                    String msg = notification.getSettleRequestJSON(getApplicationContext()).toString();
+                    String s2 = new ServerConnection().execute(Utility.FCM_URL, msg, SendToFCM).get();
+                    Log.d("FCM", s2);
+                    //Toast.makeText(getApplicationContext(), "Money Transferred", Toast.LENGTH_LONG).show();
+                } catch (Exception ex){
+
+                }
+
+                //finish();
 
             }
         });
@@ -214,6 +243,41 @@ public class MainActivity extends AppCompatActivity
         });
 
         builder.show();
+    }
+
+    private void handleNotification(){
+        try {
+
+            String msgType = getIntent().getStringExtra(NOTIFICATION_MSG_TYPE);
+            if(msgType == null){
+                return;
+            }
+
+            getIntent().removeExtra(NOTIFICATION_MSG_TYPE);
+
+            Notification notification = new Notification();
+
+            if(msgType.compareToIgnoreCase(SETTLEMENT_REQ) == 0){
+                notification.MessageType = SETTLEMENT_RES_OK;
+                notification.userInQue =             getIntent().getStringExtra(SETTLEMENT_USER_IN_QUE);
+                notification.amount = getIntent().getStringExtra(NOTIFICATION_AMOUNT);
+            } else if(msgType.compareToIgnoreCase(SETTLEMENT_RES_OK) == 0){
+                String userInQue =             getIntent().getStringExtra(SETTLEMENT_USER_IN_QUE);
+
+                HashMap map = Storage.getInstance().balanceMap;
+                map.remove(userInQue);
+            }
+
+            //notification.toUniqueID = Storage.getInstance().getUserMap().get(user).name;
+
+            String msg = notification.getSettleRequestJSON(getApplicationContext()).toString();
+//            lastSettlmentUser = user;
+            String s2 = new ServerConnection().execute(Utility.FCM_URL, msg, SendToFCM).get();
+            Log.d("FCM", s2);
+            //Toast.makeText(getApplicationContext(), "Money Transferred", Toast.LENGTH_LONG).show();
+        } catch (Exception ex){
+
+        }
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -304,8 +368,7 @@ public class MainActivity extends AppCompatActivity
             //intent.putExtra(EXTRA_MESSAGE, message);
             startActivity(intent);
         } else if (id == R.id.nav_share) {
-            MessageNotification.notify(getApplicationContext(), "maja aai gai", 5);
-
+            //MessageNotification.notify(getApplicationContext(), "he ne?", "maja aai gai", 2);
         } else if (id == R.id.nav_send) {
 
         }
@@ -399,10 +462,21 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void settleKar(View v) {
-        Button button = (Button) v;
-        //show alert dialog
+        try {
+            Button button = (Button) v;
+            //show alert dialog
 
-        settleDialogCode();
+            LinearLayout ll = (LinearLayout) v.getParent();
+            TextView tv = (TextView) ll.findViewById(R.id.content);
+            double amount = Double.parseDouble(tv.getText().toString());
+
+            TextView user = (TextView) ll.findViewById(R.id.id);
+
+
+            settleDialogCode(user.getText().toString(), amount);
+        } catch (Exception ex){
+            //LOG
+        }
 
         //handle alert events
 

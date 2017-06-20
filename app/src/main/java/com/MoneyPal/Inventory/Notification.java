@@ -1,25 +1,26 @@
 package com.MoneyPal.Inventory;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.MoneyPal.Common.Utility;
+import com.MoneyPal.ServerConnection;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-import static com.MoneyPal.Common.Utility.GLOBAL_SEND;
+import static com.MoneyPal.Common.Utility.*;
 
 /**
  * Created by manan on 6/15/2017.
  */
 
 public class Notification {
-    private static final String TITLE = "title";
-    private static final String BODY = "body";
-    private static final String TO = "to";
-    private static final String FROM = "from";
-    private static final String FROMUser = "from_user";
-    private static final String TOUSER = "to_user";
-    private static final String DATA = "data";
-    private static final String NOTIFICATION = "notification";
-    private static final String MESSAGE = "message";
+
 
     public String title;
     public String body;
@@ -27,8 +28,11 @@ public class Notification {
     public String data;
     public String fromUniqueID;
     public String toUniqueID;
+    public String amount;
+    public String MessageType;
+    public String userInQue;
 
-    public Notification(){
+    public Notification() {
         title = "A new message from MoneyPal";
         body = "";
         to = "";
@@ -37,66 +41,129 @@ public class Notification {
         toUniqueID = "";
     }
 
-    public JSONObject getMyJSON(){
+    public JSONObject getMyJSON() {
         JSONObject json = new JSONObject();
 
         try {
             JSONObject notification = new JSONObject();
-            notification.put(TITLE, TITLE);
-            notification.put(BODY, BODY);
+            notification.put(NOTIFICATION_TITLE, NOTIFICATION_TITLE);
+            notification.put(NOTIFICATION_BODY, NOTIFICATION_BODY);
 
-            json.put(NOTIFICATION, notification);
-            json.put(TO, "dQHWS45qxwg:APA91bGl6qsizsGBvCUJ4l3cYk7rTcG51q4ka73qBPvJL0jkji11-Ozy7kVBgR8qFmcfS2Q5BSk31C1-phdbgParpxrKb9ArC9SjPAeXtXAcGH4ATBA4WAtu6aIWFaFFW4QrjCePfddN");
-        } catch (Exception ex){
+            json.put(NOTIFICATION_NOTIFICATION, notification);
+            json.put(NOTIFICATION_TO, "dQHWS45qxwg:APA91bGl6qsizsGBvCUJ4l3cYk7rTcG51q4ka73qBPvJL0jkji11-Ozy7kVBgR8qFmcfS2Q5BSk31C1-phdbgParpxrKb9ArC9SjPAeXtXAcGH4ATBA4WAtu6aIWFaFFW4QrjCePfddN");
+        } catch (Exception ex) {
 
         }
 
         return json;
     }
 
-    public JSONObject getMyJSON2(){
+    public JSONObject getMyJSON2() {
         JSONObject json = new JSONObject();
 
         try {
             JSONObject notification = new JSONObject();
-            notification.put(TITLE, title);
-            notification.put(BODY, body);
+            notification.put(NOTIFICATION_TITLE, title);
+            notification.put(NOTIFICATION_BODY, body);
             //notification.put (MESSAGE, "Hey hey good looking!");
-            json.put(NOTIFICATION, notification);
+            json.put(NOTIFICATION_NOTIFICATION, notification);
             //json.put(DATA, data);
-            json.put(TO, GLOBAL_SEND);
-        } catch (Exception ex){
+            json.put(NOTIFICATION_TO, GLOBAL_SEND);
+        } catch (Exception ex) {
 
         }
 
         return json;
     }
 
-    public JSONObject getJSONData(){
+    public JSONObject getJSONData(Context context) {
         JSONObject json = new JSONObject();
 
         try {
             JSONObject notification = new JSONObject();
-            notification.put(TITLE, TITLE);
-            notification.put(BODY, BODY);
+            notification.put(NOTIFICATION_TITLE, "");
+            notification.put(NOTIFICATION_BODY, "");
             //notification.put (MESSAGE, "Hey hey good looking!");
             //json.put(NOTIFICATION, notification);
 
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+            String uniqueID = preferences.getString(UNIQUE_ID, "");
+            String userName = preferences.getString(USERNAME, "");
+
             JSONObject data = new JSONObject();
-            data.put(MESSAGE, "");
-            data.put(TOUSER, toUniqueID);
-            data.put(FROMUser, fromUniqueID);
+            data.put(NOTIFICATION_MESSAGE, "");
+            data.put(NOTIFICATION_TOUSER, toUniqueID);
+            data.put(NOTIFICATION_FROMName, userName);
+            data.put(NOTIFICATION_FROMID,uniqueID);
             data.put("not_message_type", "mytype"); //TODO : handle message accordingly on the receiving end
-            json.put(DATA, data);
-            json.put(TO, GLOBAL_SEND);
+            json.put(NOTIFICATION_DATA, data);
+            json.put(NOTIFICATION_TO, GLOBAL_SEND);
+
+
         } catch (Exception ex){
 
         }
 
         return json;
     }
-}
 
+    public JSONObject getSettleRequestJSON(Context context) {
+        //TODO get unique ID, amount, request type
+
+        JSONObject json = new JSONObject();
+
+        try {
+            JSONObject notification = new JSONObject();
+            notification.put(NOTIFICATION_TITLE, NOTIFICATION_TITLE);
+            notification.put(NOTIFICATION_BODY, NOTIFICATION_BODY);
+
+
+            //Notification.NotificationFCMMessage msg = new Notification.NotificationFCMMessage();
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+            String uniqueID = preferences.getString(UNIQUE_ID, "");
+            String userName = preferences.getString(USERNAME, "");
+
+            JSONObject data = new JSONObject();
+            data.put(NOTIFICATION_MSG_TYPE, MessageType);
+            data.put(SETTLEMENT_USER_IN_QUE, userInQue);
+            data.put(NOTIFICATION_FROMID,uniqueID);
+            data.put(NOTIFICATION_ToID, toUniqueID);
+            data.put(NOTIFICATION_FROMName, userName);
+            data.put(NOTIFICATION_AMOUNT, amount);
+            json.put(NOTIFICATION_DATA, data);
+            json.put(NOTIFICATION_TO, GLOBAL_SEND);
+        } catch (Exception ex) {
+
+        }
+
+        return json;
+    }
+
+    public boolean doStuff(Context context) {
+        try {
+
+            Notification notification = new Notification();
+
+            String s2 = new ServerConnection().execute(Utility.FCM_URL, notification.getSettleRequestJSON(context).toString(), SendToFCM).get();
+
+            Log.d("FCM", s2);
+            Toast.makeText(context, "Money Transferred", Toast.LENGTH_LONG).show();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    public static class NotificationFCMMessage{
+        public double amount;
+        public int refereceNumber;
+        public String data;
+        public String fromUniqueID;
+        public String toUniqueID;
+        public String fromName;
+
+    };
+}
 /*
 
 Content-Type:application/json

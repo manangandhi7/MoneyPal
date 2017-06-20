@@ -43,5 +43,7 @@
     </string>
 
     <string name="action_share">Settle</string>
+    <string name="action_details">Details</string>
     <string name="action_reply">Reply</string>
+    <string name="action_decline">Decline</string>
 </resources>

@@ -20,6 +20,8 @@ import com.MoneyPal.Inventory.Storage;
 import com.MoneyPal.R;
 
 import com.MoneyPal.ServerConnection;
+import com.appeaser.sublimepickerlibrary.datepicker.SelectedDate;
+import com.appeaser.sublimepickerlibrary.recurrencepicker.SublimeRecurrencePicker;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -48,24 +50,30 @@ public class SendMoneyActivity extends AppCompatActivity {
         final Button button = (Button) findViewById(R.id.transfer_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                try {
+                CheckBox transfer_now = (CheckBox) findViewById(R.id.transfer_now);
+                if(transfer_now.isChecked()){
+                    try {
 
-                    JSONObject json = new JSONObject();
-                    json.put("AccountNumber", "30001512992");
-                    String s = new ServerConnection().execute(Utility.Account_List, json.toString(), SendToSBI).get();
-                    //String s = new com.MoneyPal.ServerConnection().execute(Utility.Account_List, "{\"AccountNumber\": \"30001512992\" }").get();
-                    Log.d("SBI", s);
+                        JSONObject json = new JSONObject();
+                        json.put("AccountNumber", "30001512992");
+                        String s = new ServerConnection().execute(Utility.Account_List, json.toString(), SendToSBI).get();
+                        //String s = new com.MoneyPal.ServerConnection().execute(Utility.Account_List, "{\"AccountNumber\": \"30001512992\" }").get();
+                        Log.d("SBI", s);
 
-                    Notification notification = new Notification();
+                        Notification notification = new Notification();
 
-                    String s2 = new ServerConnection().execute(Utility.FCM_URL, notification.getJSONData().toString(), SendToFCM).get();
+                        String s2 = new ServerConnection().execute(Utility.FCM_URL, notification.getJSONData(getApplicationContext()).toString(), SendToFCM).get();Log.d("FCM", s2);
+                        Toast.makeText(getApplicationContext(), "Money Transferred", Toast.LENGTH_LONG).show();
 
-                    Log.d("FCM", s2);
-                } catch (Exception e) {
-                    Log.e("error", e.toString());
+                        finish();
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "Error occurred, please try again!", Toast.LENGTH_LONG).show();
+                        Log.e("error", e.toString());
+                    }
+                }else {
+                    Toast.makeText(getApplicationContext(), "Money will be transferred", Toast.LENGTH_LONG).show();
+                    finish();
                 }
-                Toast.makeText(getApplicationContext(), "Money Transferred", Toast.LENGTH_LONG).show();
-                finish();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -85,7 +93,22 @@ public class SendMoneyActivity extends AppCompatActivity {
         CheckBox transfer_now = (CheckBox) view;
         if(!transfer_now.isChecked()){
             SublimePickerFragment pickerFrag = new SublimePickerFragment();
-            pickerFrag.show(getSupportFragmentManager(), "SUBLIME_PICKER");
+            pickerFrag.setCallback(mFragmentCallback);
+            pickerFrag.show(getSupportFragmentManager(), "Select date/time");
         }
     }
+
+    SublimePickerFragment.Callback mFragmentCallback = new SublimePickerFragment.Callback() {
+
+        @Override
+        public void onCancelled() {
+            CheckBox transfer_now = (CheckBox) findViewById(R.id.transfer_now);
+            transfer_now.setChecked(true);
+        }
+
+        @Override
+        public void onDateTimeRecurrenceSet(SelectedDate selectedDate, int hourOfDay, int minute, SublimeRecurrencePicker.RecurrenceOption recurrenceOption, String recurrenceRule) {
+            //Toast.makeText(getApplicationContext(), recurrenceOption.toString(), Toast.LENGTH_LONG).show();
+        }
+    };
 }

@@ -26,7 +26,7 @@
             android:id="@+id/account_number_textbox" />
 
     <EditText
-        android:text=""
+        android:text="30001512992"
         android:textColor="@color/Black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:id="@+id/ifsc_code_textbox" />
 
     <EditText
-        android:text=""
+        android:text="SBIN0000438"
         android:textColor="@color/Black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,6 +71,7 @@
         android:id="@+id/password_textbox" />
 
     <EditText
+        android:text="mySecretPassword"
         android:id="@+id/bank_acc_passwod"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -6,14 +6,23 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 
 import com.MoneyPal.Activity.MainActivity;
+import com.MoneyPal.Common.Utility;
+import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.Map;
+
+import static com.MoneyPal.Common.Utility.*;
+
 
 /**
  * Helper class for showing and canceling message
@@ -44,19 +53,99 @@ public class MessageNotification {
      * @see #cancel(Context)
      */
     public static void notify(final Context context,
-                              final String exampleString, final int number) {
+                              String textBody, String textTitle, final RemoteMessage remoteMessage) {
         final Resources res = context.getResources();
 
         // This image is used as the notification's large icon (thumbnail).
         // TODO: Remove this if your notification has no relevant thumbnail.
-        final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.example_picture);
+        final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.example_picture2);
+
+        if (textBody == null){
+            textBody = "Money Pal update";
+        }
+
+        if(textTitle == null){
+            textTitle = "Update";
+        }
+
+        final String ticker = textBody;
+//        final String title = res.getString(
+    //            R.string.message_notification_title_template, textTitle);
+  //      final String text = res.getString(
+      //          R.string.message_notification_placeholder_text_template, textBody);
+
+        String title = textTitle;
+        String text = textBody;
+        String settleButtonText = "Ok";
+        String replyButtonText = "Details";
+        Intent okIntent =new Intent(context, MainActivity.class);
+
+        if (remoteMessage != null){
+            Map<String, String> map = remoteMessage.getData();
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+            String uniqueID = preferences.getString(UNIQUE_ID, "");
+
+            String msgtype = "";
+            //String title2 = null;
+            String body = null;
+
+            String fromUser = "";
+            String  amount = "";
+            String  userinQue = "";
+            if(map.containsKey(NOTIFICATION_FROMName)) {
+                fromUser = map.get(NOTIFICATION_FROMName).toString();
+            }
+
+            if(map.containsKey(NOTIFICATION_AMOUNT)) {
+
+                amount = map.get(NOTIFICATION_AMOUNT).toString();
+            }
+
+            if(map.get(NOTIFICATION_MSG_TYPE) != null){
+                msgtype = map.get(NOTIFICATION_MSG_TYPE).toString();
+            }
+
+            if(map.get(SETTLEMENT_USER_IN_QUE) != null){
+                userinQue =map.get(SETTLEMENT_USER_IN_QUE).toString();
+            }
+
+            okIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            if(msgtype.compareToIgnoreCase(SETTLEMENT_REQ) == 0){
+                title = "Settlement request : " + fromUser;
+                text = "Settlement amount : " + amount;
+                settleButtonText = "Settle";
+                replyButtonText = "Details";
+
+                if (map.get(NOTIFICATION_FROMID) != null){
+                    okIntent.putExtra(Utility.NOTIFICATION_ToID, map.get(NOTIFICATION_FROMID));
+                    okIntent.putExtra(Utility.NOTIFICATION_MSG_TYPE, SETTLEMENT_REQ);
+                    okIntent.putExtra(Utility.SETTLEMENT_USER_IN_QUE, userinQue);
+                    okIntent.putExtra(Utility.NOTIFICATION_AMOUNT, amount);
 
 
-        final String ticker = exampleString;
-        final String title = res.getString(
-                R.string.message_notification_title_template, exampleString);
-        final String text = res.getString(
-                R.string.message_notification_placeholder_text_template, exampleString);
+                }
+
+
+            } else if(msgtype.compareToIgnoreCase(SETTLEMENT_RES_OK) == 0){
+                title = "Settlement response Ok" + userinQue;
+                text = "Settlement amount : " + amount;
+                settleButtonText = "Ok";
+                replyButtonText = "Details";
+
+                if (map.get(NOTIFICATION_FROMID) != null){
+                    okIntent.putExtra(Utility.NOTIFICATION_MSG_TYPE, SETTLEMENT_RES_OK);
+                    okIntent.putExtra(Utility.SETTLEMENT_USER_IN_QUE, userinQue);
+
+                }
+            }
+
+
+            //get the message type and details
+            // create a title and body
+            // set up action button to send notification back
+        }
 
          NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
 
@@ -85,7 +174,7 @@ public class MessageNotification {
 
                 // Show a number. This is useful when stacking notifications of
                 // a single type.
-                .setNumber(number)
+                //.setNumber(number)
 
                 // If this notification relates to a past or upcoming event, you
                 // should set the relevant time information using the setWhen
@@ -99,18 +188,14 @@ public class MessageNotification {
                 // Set the pending intent to be initiated when the user touches
                 // the notification.
                 .setContentIntent(
-                        PendingIntent.getActivity(
-                                context,
-                                0,
-                                new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com")),
-                                PendingIntent.FLAG_UPDATE_CURRENT))
+                        PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0))
 
                 // Show expanded text content on devices running Android 4.1 or
                 // later.
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(text)
                         .setBigContentTitle(title)
-                        .setSummaryText("Dummy summary text"))
+                        .setSummaryText("Developed by Manan Gandhi"))
 
                 // Example additional actions for this notification. These will
                 // only show on devices running Android 4.1 or later, so you
@@ -119,23 +204,19 @@ public class MessageNotification {
                 // another way.
                 .addAction(
                         R.drawable.checkmark_medium_ff,
-                        res.getString(R.string.action_share),
-                        PendingIntent.getActivity(
-                                context,
-                                0,
-                                Intent.createChooser(new Intent(Intent.ACTION_SEND)
-                                        .setType("text/plain")
-                                        .putExtra(Intent.EXTRA_TEXT, "Dummy text"), "Dummy title"),
-                                PendingIntent.FLAG_UPDATE_CURRENT))
+                        settleButtonText,
+                        PendingIntent.getActivity(context, 0, okIntent, PendingIntent.FLAG_UPDATE_CURRENT))
                 .addAction(
                         R.drawable.ic_action_stat_reply,
-                        res.getString(R.string.action_reply),
+                        replyButtonText,
                         PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0))
 
                 // Automatically dismiss the notification when it is touched.
                 .setAutoCancel(true);
 
         notify(context, builder.build());
+
+
     }
 
     private void addButton(){
@@ -153,10 +234,7 @@ public class MessageNotification {
         }
     }
 
-    /**
-     * Cancels any notifications of this type previously shown using
-     * {@link #notify(Context, String, int)}.
-     */
+
     @TargetApi(Build.VERSION_CODES.ECLAIR)
     public static void cancel(final Context context) {
         final NotificationManager nm = (NotificationManager) context
